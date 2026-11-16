@@ -26,8 +26,8 @@
             overflow: hidden;
         }
         .img_haut {
-            width: calc(100% - 729px);
-            height: 1024px;
+            width: calc(100% - 29px);
+            height: 492px;
             background: url("../images/img-connexion.png");
             background-repeat: no-repeat;
             background-position: center center;
@@ -35,21 +35,23 @@
             opacity: 1;
             position: absolute;
             top: 0px;
-            left: 729px;
+            left: 29px;
             overflow: hidden;
+            clip-path: inset(0 0 0 700px);
         }
         .img_bas {
             width: calc(100% - 729px);
-            height: 1024px;
+            height: 532px;
             background: url("../images/img-connexion.png");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
             opacity: 1;
             position: absolute;
-            top: 0px;
+            top: 493px;
             left: 729px;
             overflow: hidden;
+            width: 100%;
         }
         .gauche {
             width: 597px;
