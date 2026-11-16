@@ -2,7 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Connexion - Prismelium</title>
+    <title>Connexion - LIUM</title>
+    <!-- Importation de la police Poppins depuis Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -10,151 +12,272 @@
             padding: 0;
         }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            height: 100vh;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-        .login-wrapper {
-            width: 450px;
-            padding: 40px 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-        .logo-container {
-            margin-bottom: 30px;
-        }
-        .logo-container img {
-            width: 160px; /* Ajustez la taille selon votre image */
-            height: auto;
-        }
-        .error {
-            color: #d9534f;
-            background: #fdf7f7;
-            padding: 10px;
-            border: 1px solid #ebccd1;
-            border-radius: 4px;
-            margin-bottom: 15px;
             font-size: 14px;
+            font-family: 'Poppins', sans-serif;
         }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        input {
+        .page {
             width: 100%;
-            padding: 14px 16px;
-            border: 1px solid #b0b0b0;
-            border-radius: 6px;
-            font-size: 15px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        input:focus {
-            border-color: #2b396e;
-        }
-        input::placeholder {
-            color: #888888;
-        }
-        .input-hint {
-            font-size: 13px;
-            color: #555555;
-            margin-top: 2px;
-        }
-        button[type="submit"] {
-            width: 100%;
-            padding: 14px;
-            background-color: #2b396e; /* Bleu foncé du LIUM */
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 5px;
-        }
-        button[type="submit"]:hover {
-            background-color: #1f2a52;
-        }
-        .forgot-password {
-            font-size: 13px;
-            color: #2b82cc;
-            text-decoration: none;
-            margin-top: -5px;
-        }
-        .forgot-password:hover {
-            text-decoration: underline;
-        }
-        .security-notice {
-            font-size: 11px;
-            color: #000000;
-            line-height: 1.4;
-            margin-top: 40px;
-        }
-        .security-notice span {
-            color: #e67e22; /* Couleur orange pour "déconnecter" */
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .img_haut {
-            width: 100%;
-            height: 492px;
-            background: url("../images/v56_47.png");
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
+            height: 1024px;
+            background: rgba(255,255,255,1);
             opacity: 1;
             position: absolute;
             top: 0px;
             left: 0px;
             overflow: hidden;
         }
-        .img_bas {
-            width: 100%;
-            height: 492px;
-            background: url("../images/v56_47.png");
+        .img_haut {
+            width: calc(100% - 729px);
+            height: 1024px;
+            background: url("../images/v56_51.png");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
             opacity: 1;
             position: absolute;
-            top: 492px;
-            left: 984px;
+            top: 0px;
+            left: 729px;
             overflow: hidden;
+        }
+        .img_bas {
+            width: calc(100% - 729px);
+            height: 1024px;
+            background: url("../images/v56_51.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            opacity: 1;
+            position: absolute;
+            top: 0px;
+            left: 729px;
+            overflow: hidden;
+        }
+        .gauche {
+            width: 597px;
+            height: 100%;
+            background: rgba(255,255,255,1);
+            opacity: 1;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            overflow: hidden;
+        }
+        .logo {
+            width: 251px;
+            height: 161px;
+            background: url("../images/v56_42.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            opacity: 1;
+            position: absolute;
+            top: 165px;
+            left: 173px;
+            overflow: hidden;
+        }
+        .champ_mail {
+            width: 430px;
+            height: 72px;
+            background: rgba(161,161,161,1);
+            opacity: 1;
+            position: absolute;
+            top: 362px;
+            left: 83px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            overflow: hidden;
+        }
+        .mail {
+            width: 424px;
+            height: 67px;
+            background: rgba(255,255,255,1);
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .mail input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding-left: 20px;
+            color: rgba(154,154,154,1);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+        }
+        .champ_mdp {
+            width: 430px;
+            height: 63px;
+            background: rgba(161,161,161,1);
+            opacity: 1;
+            position: absolute;
+            top: 512px;
+            left: 83px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            overflow: hidden;
+        }
+        .mdp {
+            width: 424px;
+            height: 58px;
+            background: rgba(255,255,255,1);
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .mdp input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding-left: 20px;
+            color: rgba(154,154,154,1);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+        }
+        .champs_id {
+            width: 421px;
+            color: rgba(154,154,154,1);
+            position: absolute;
+            top: 434px;
+            left: 93px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 17px;
+            text-align: left;
+        }
+        .bouton_connexion {
+            width: 424px;
+            height: 67px;
+            background: rgba(40,47,99,1);
+            opacity: 1;
+            position: absolute;
+            top: 651px;
+            left: 86px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .connexion {
+            width: 100%;
+            color: rgba(255,255,255,1);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+        }
+        .msg_secu {
+            width: 522px;
+            color: #000000;
+            position: absolute;
+            top: 823px;
+            left: 37px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            font-size: 17px;
+            text-align: left;
+            line-height: 1.4;
+        }
+        .msg_secu span {
+            color: #e67e22;
+        }
+        .mdp_oublie {
+            width: 185px;
+            color: rgba(96,160,255,1);
+            position: absolute;
+            top: 739px;
+            left: 86px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: normal;
+            font-size: 17px;
+            text-align: left;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .error-msg {
+            position: absolute;
+            top: 310px;
+            left: 83px;
+            color: #d9534f;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <div class="login-container">
-        <h2>Connexion</h2>
+    <div class="page">
+        <!-- Partie droite (Visuel / Image d'illustration) -->
+        <div class="img_haut"></div>
+        <div class="img_bas"></div>
 
-        <!-- Affichage des messages d'erreur si existants -->
-        <?php if (!empty($erreur)): ?>
-            <div class="error"><?= htmlspecialchars($erreur) ?></div>
-        <?php endif; ?>
+        <!-- Panneau de gauche -->
+        <div class="gauche">
+            <!-- Logo -->
+            <div class="logo" style="background-image: url('logo-lium.png');"></div>
 
-        <!-- Le formulaire pointe vers le contrôleur -->
-        <form action="connexionController.php" method="POST">
-            <label for="mail">Adresse email :</label>
-            <input type="email" id="mail" name="mail" required>
+            <!-- Gestion des erreurs PHP -->
+            <?php if (!empty($erreur)): ?>
+                <div class="error-msg"><?= htmlspecialchars($erreur) ?></div>
+            <?php endif; ?>
 
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" required>
+            <!-- Formulaire de connexion -->
+            <form action="connexionController.php" method="POST">
+                
+                <!-- Champ Identifiant / Mail -->
+                <div class="champ_mail">
+                    <div class="mail">
+                        <input type="text" id="mail" name="mail" placeholder="Identifiant..." required>
+                    </div>
+                </div>
+                <div class="champs_id">Vous devez entrer votre identifiant.</div>
 
-            <button type="submit">Se connecter</button>
-        </form>
+                <!-- Champ Mot de passe -->
+                <div class="champ_mdp">
+                    <div class="mdp">
+                        <input type="password" id="password" name="password" placeholder="Mot de passe..." required>
+                    </div>
+                </div>
+
+                <!-- Mot de passe oublié -->
+                <a href="#" class="mdp_oublie">Mot de passe oublié ?</a>
+
+                <!-- Bouton de soumission -->
+                <button type="submit" class="bouton_connexion">
+                    <span class="connexion">Se connecter</span>
+                </button>
+            </form>
+
+            <!-- Message de sécurité bas de page -->
+            <div class="msg_secu">
+                Pour des raisons de sécurité, veuillez vous <span>déconnecter</span> et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.
+            </div>
+        </div>
     </div>
 
 </body>
