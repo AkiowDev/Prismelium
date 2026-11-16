@@ -265,6 +265,10 @@
 /* Message individuel */
 
 .message {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+
     height: 56px;
     padding: 8px 10px;
 
@@ -367,6 +371,7 @@
 .informations_message p {
     margin-bottom: 6px;
     font-size: 14px;
+    
 }
 
 .informations_message .date_message {
@@ -386,4 +391,16 @@
 
 .corps_message p {
     margin-bottom: 18px;
+}
+
+.pas_de_message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#messagerie_vide {
+    width: 50%;
 }
