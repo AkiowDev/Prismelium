@@ -11,13 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($mail) && !empty($password)) {
         $user = get_user_by_mail($mail);
 
-        // On vérifie si l'utilisateur existe et si le mot de passe est correct
         if ($user && $password == $user['Mdp_User']) {
-            // Connexion réussie : stockage en session
-            $_SESSION['user_id'] = $user['Id_User']; // Adaptez selon votre clé primaire
+            $_SESSION['user_id'] = $user['Id_User'];
             $_SESSION['user_mail'] = $user['Mail_User'];
             
-            header('Location: accueilView.php'); // Redirection vers la page protégée
+            header('Location: accueilView.php');
             exit();
         } else {
             $erreur = "Email ou mot de passe incorrect.";

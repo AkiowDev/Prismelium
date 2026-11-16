@@ -28,7 +28,7 @@
         .img_haut {
             width: calc(100% - 729px);
             height: 1024px;
-            background: url("../images/v56_51.png");
+            background: url("../images/img-connexion.png");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
@@ -41,7 +41,7 @@
         .img_bas {
             width: calc(100% - 729px);
             height: 1024px;
-            background: url("../images/v56_51.png");
+            background: url("../images/img-connexion.png");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
@@ -64,7 +64,7 @@
         .logo {
             width: 251px;
             height: 161px;
-            background: url("../images/v56_42.png");
+            background: url("../images/logo-lium.png");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;
@@ -220,8 +220,8 @@
         }
         .error-msg {
             position: absolute;
-            top: 310px;
-            left: 83px;
+            top: 580px;
+            left: 90px;
             color: #d9534f;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
@@ -232,24 +232,18 @@
 <body>
 
     <div class="page">
-        <!-- Partie droite (Visuel / Image d'illustration) -->
         <div class="img_haut"></div>
         <div class="img_bas"></div>
 
-        <!-- Panneau de gauche -->
         <div class="gauche">
-            <!-- Logo -->
-            <div class="logo" style="background-image: url('logo-lium.png');"></div>
+            <div class="logo"></div>
 
-            <!-- Gestion des erreurs PHP -->
             <?php if (!empty($erreur)): ?>
                 <div class="error-msg"><?= htmlspecialchars($erreur) ?></div>
             <?php endif; ?>
 
-            <!-- Formulaire de connexion -->
             <form action="connexionController.php" method="POST">
                 
-                <!-- Champ Identifiant / Mail -->
                 <div class="champ_mail">
                     <div class="mail">
                         <input type="text" id="mail" name="mail" placeholder="Identifiant..." required>
@@ -257,23 +251,19 @@
                 </div>
                 <div class="champs_id">Vous devez entrer votre identifiant.</div>
 
-                <!-- Champ Mot de passe -->
                 <div class="champ_mdp">
                     <div class="mdp">
                         <input type="password" id="password" name="password" placeholder="Mot de passe..." required>
                     </div>
                 </div>
 
-                <!-- Mot de passe oublié -->
                 <a href="#" class="mdp_oublie">Mot de passe oublié ?</a>
 
-                <!-- Bouton de soumission -->
                 <button type="submit" class="bouton_connexion">
                     <span class="connexion">Se connecter</span>
                 </button>
             </form>
 
-            <!-- Message de sécurité bas de page -->
             <div class="msg_secu">
                 Pour des raisons de sécurité, veuillez vous <span>déconnecter</span> et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.
             </div>
