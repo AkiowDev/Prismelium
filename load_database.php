@@ -16,8 +16,6 @@
         PDO::ERRMODE_EXCEPTION
     );
 
-    echo "Connexion réussie à la base de données !";
-
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
 }

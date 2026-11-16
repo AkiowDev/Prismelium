@@ -1,6 +1,6 @@
 
 /* ================================= */
-/* 1. RÉINITIALISATION GÉNÉRALE */
+/*    RÉINITIALISATION GÉNÉRALE      */
 /* ================================= */
 
 * {
@@ -11,7 +11,7 @@
 
 
 /* ================================= */
-/* 2. BODY : PAGE PRINCIPALE */
+/*      BODY : PAGE PRINCIPALE       */
 /* ================================= */
 
 .body_messagerie {
@@ -26,7 +26,7 @@
 
 
 /* ================================= */
-/* 3. PREMIÈRE COLONNE : BARRE LATÉRALE */
+/* PREMIÈRE COLONNE : BARRE LATÉRALE */
 /* ================================= */
 
 .barre_laterale {
@@ -107,7 +107,7 @@
 
 
 /* ================================= */
-/* 4. DEUXIÈME COLONNE : BARRE CHOIX */
+/* DEUXIÈME COLONNE : BARRE CHOIX    */
 /* ================================= */
 
 .barre_choix {
@@ -134,6 +134,7 @@
     align-items: center;
 
     border-bottom: 1px solid #D8D8D8;
+    background-color: #EEEEEE;
 
     font-family: Arial, sans-serif;
     font-size: 12px;
@@ -207,39 +208,51 @@
 }
 
 
+
 /* ================================= */
-/* 5. TROISIÈME COLONNE : LISTE DES MESSAGES */
+/* TROISIÈME COLONNE : LISTE DES MESSAGES */
 /* ================================= */
 
 .barre_messages {
-    flex: 1;
-    min-width: 300px;
+    width: 272px;
+    min-width: 272px;
     height: 100vh;
+    flex-shrink: 0;
 
     display: flex;
     flex-direction: column;
 
-    background-color: #ffffff;
-    border-right: 1px solid #dcdcdc;
+    background-color: #FFFFFF;
+    border-right: 1px solid #D8D8D8;
 }
 
-/* En-tête des messages */
+/* Barre d'outils */
 
 .entete_messages {
     height: 73px;
-    flex-shrink: 0;
-
+    min-height: 73px;
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-
-    padding: 0 20px;
-
-    border-bottom: 1px solid #dcdcdc;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #D8D8D8;
+    background-color: #EEEEEE;
 }
 
-.entete_messages h2 {
-    font-size: 20px;
-    font-weight: 600;
+.outil_message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.icone_outil {
+    font-size: 25px;
 }
 
 /* Liste des messages */
@@ -249,52 +262,65 @@
     overflow-y: auto;
 }
 
-/* Message */
+/* Message individuel */
 
 .message {
-    position: relative;
+    height: 56px;
+    padding: 8px 10px;
 
-    padding: 15px 20px;
-
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #D8D8D8;
 
     cursor: pointer;
 }
 
 .message:hover {
-    background-color: #f5f5f5;
+    background-color: #F2F2F2;
 }
 
-/* Informations du message */
+/* Ligne expéditeur et date */
+
+.ligne_message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
 
 .expediteur {
-    font-weight: bold;
-    font-size: 14px;
-}
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #888888;
 
-.objet {
-    margin-top: 5px;
-    font-size: 14px;
-}
-
-.apercu {
-    margin-top: 5px;
-    font-size: 13px;
-    color: #777777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .date {
-    position: absolute;
-    top: 15px;
-    right: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: #888888;
 
-    font-size: 12px;
-    color: #777777;
+    white-space: nowrap;
+}
+
+/* Contenu affiché sous l'expéditeur */
+
+.objet {
+    margin-top: 8px;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #171717;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
 /* ================================= */
-/* 6. QUATRIÈME COLONNE : CONTENU DU MESSAGE */
+/* QUATRIÈME COLONNE : CONTENU DU MESSAGE */
 /* ================================= */
 
 .contenu_message {
@@ -320,6 +346,7 @@
     padding: 0 25px;
 
     border-bottom: 1px solid #dcdcdc;
+    background-color: #EEEEEE;
 }
 
 .entete_contenu h2 {

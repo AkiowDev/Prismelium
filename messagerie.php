@@ -1,3 +1,8 @@
+<?php
+require_once 'load_database.php';
+require_once 'load_messages.php'
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -74,18 +79,59 @@
     </div>
     <div class="barre_messages">
 
-    <div class="entete_messages">
-        <h2>Boîte de réception</h2>
-    </div>
-
+    <!-- Liste des messages -->
     <div class="liste_messages">
 
-        <div class="message">
-            <p class="expediteur">John Doe</p>
-            <p class="objet">Réunion de demain</p>
-            <p class="apercu">Bonjour, je vous confirme notre réunion...</p>
-            <p class="date">14:26</p>
+    <div class="entete_messages">
+
+        <div class="outil_message">
+        <span class="icone_outil">➤</span>
+        <span>Sélectionner</span>
         </div>
+
+        <div class="outil_message">
+        <span class="icone_outil">●</span>
+        <span>Fils</span>
+        </div>
+
+        <div class="outil_message">
+        <span class="icone_outil">☷</span>
+        <span>Options</span>
+        </div>
+
+        <div class="outil_message">
+        <span class="icone_outil">⟳</span>
+        <span>Actualiser</span>
+        </div>
+
+    </div>
+        <?php foreach ($messages as $message): ?>
+
+            <div class="message">
+
+                <div class="ligne_message">
+
+                    <p class="expediteur">
+                        <?= htmlspecialchars($message['Nom_Expediteur'] . ' ' . $message['Prenom_Expediteur'], ENT_QUOTES, 'UTF-8') ?>
+                    </p>
+
+                    <p class="date">
+                        <?= htmlspecialchars($message['Date_Msg'], ENT_QUOTES, 'UTF-8') ?>
+                    </p>
+
+                </div>
+
+                <p class="objet">
+                    • <?= htmlspecialchars($message['Contenu_Msg'], ENT_QUOTES, 'UTF-8') ?>
+                </p>
+
+            </div>
+
+        <?php endforeach; ?>
+
+    </div>
+
+</div>
 
     </div>
     </div>
