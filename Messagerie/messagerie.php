@@ -2,7 +2,7 @@
     require_once 'load_database.php';
 
     $messages = [];
-    
+
     require_once 'load_messages.php';
     ?>
 
@@ -130,6 +130,7 @@
             <p><strong>De: <?= htmlspecialchars($message_selectionne['Nom_Expediteur'] . ' ' . $message_selectionne['Prenom_Expediteur'], ENT_QUOTES, 'UTF-8') ?></strong></p>
             <p><?= htmlspecialchars($message_selectionne['Mail_Expediteur'], ENT_QUOTES, 'UTF-8') ?></p>
             <p><?= htmlspecialchars($message_selectionne['Date_Msg'], ENT_QUOTES, 'UTF-8') ?></p>
+            <p><strong>À: <?= htmlspecialchars($message_selectionne['Nom_Destinataire'] . ' ' . $message_selectionne['Prenom_Destinataire'], ENT_QUOTES, 'UTF-8') ?></strong></p>
         </div>
 
         <div class="corps_message">

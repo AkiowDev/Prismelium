@@ -37,23 +37,36 @@ if (isset($_GET['message'])) {
 
     $id_message = filter_input(INPUT_GET, 'message', FILTER_VALIDATE_INT);
 
-    if ($id_message !== false && $id_message !== null && $id_message > 0) {
+    $requete = $pdo->prepare("
+    SELECT
+        emetteur.Nom_User AS Nom_Expediteur,
+        emetteur.Prenom_User AS Prenom_Expediteur,
+        emetteur.Mail_User AS Mail_Expediteur,
+        emetteur.Id_User AS Id_Expediteur,
 
-        $requete = $pdo->prepare("
-            SELECT
-                messagerie.*,
-                utilisateur.Nom_User AS Nom_Expediteur,
-                utilisateur.Prenom_User AS Prenom_Expediteur,
-                utilisateur.Mail_User AS Mail_Expediteur
-            FROM messagerie
-            INNER JOIN utilisateur
-                ON utilisateur.Id_User = messagerie.Id_Expediteur
-            WHERE messagerie.Id_Msg = :id
-        ");
+        destinataire.Nom_User AS Nom_Destinataire,
+        destinataire.Prenom_User AS Prenom_Destinataire,
+        destinataire.Mail_User AS Mail_Destinataire,
+        destinataire.Id_User AS Id_Destinataire,
 
-        $requete->execute(['id' => $id_message]);
+        messagerie.Id_Msg,
+        messagerie.Date_Msg,
+        messagerie.Contenu_Msg
 
-        $message_selectionne = $requete->fetch(PDO::FETCH_ASSOC);
-    }
+    FROM messagerie
+
+    INNER JOIN utilisateur AS emetteur
+        ON messagerie.Id_Expediteur = emetteur.Id_User
+
+    INNER JOIN utilisateur AS destinataire
+        ON messagerie.Id_Destinataire = destinataire.Id_User
+
+    WHERE messagerie.Id_Msg = :id
+    AND messagerie.Id_Destinataire = 12
+");
+
+    $requete->execute(['id' => $id_message]);
+
+    $message_selectionne = $requete->fetch(PDO::FETCH_ASSOC);
 }
 ?>
