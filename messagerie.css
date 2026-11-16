@@ -1,12 +1,34 @@
 
-/* Réinitialisation générale */
+/* ================================= */
+/* 1. RÉINITIALISATION GÉNÉRALE */
+/* ================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Barre latérale */
+
+/* ================================= */
+/* 2. BODY : PAGE PRINCIPALE */
+/* ================================= */
+
+.body_messagerie {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+
+/* ================================= */
+/* 3. PREMIÈRE COLONNE : BARRE LATÉRALE */
+/* ================================= */
+
 .barre_laterale {
     width: 82px;
     min-width: 82px;
@@ -19,18 +41,8 @@
     flex-direction: column;
 }
 
-/* Body */
-.body_messagerie {
-    display: flex;
-    flex-direction: row;
+/* Logo */
 
-    width: 100%;
-    height: 100vh;
-
-    overflow: hidden;
-}
-
-/* Emplacement du logo */
 #barre_laterale_logo {
     width: 100%;
     height: 75px;
@@ -40,7 +52,6 @@
     align-items: center;
 }
 
-/* Logo */
 #logo {
     width: 44px;
     height: 53px;
@@ -48,6 +59,7 @@
 }
 
 /* Menu */
+
 .sidebar-menu {
     width: 100%;
 
@@ -55,7 +67,8 @@
     flex-direction: column;
 }
 
-/* Boutons */
+/* Boutons du menu */
+
 .menu-item {
     width: 100%;
     height: 73px;
@@ -72,7 +85,8 @@
     font-size: 13px;
 }
 
-/* Images des icônes */
+/* Icônes du menu */
+
 .menu-item .icon img {
     width: 27px;
     height: 27px;
@@ -80,22 +94,24 @@
 }
 
 /* Bouton actif */
+
 .menu-item.active {
     background-color: #E8461B;
 }
 
 /* Survol des boutons */
+
 .menu-item:not(.active):hover {
     background-color: #3C4783;
 }
 
 
-/* ============================= */
-/* DEUXIÈME COLONNE : BARRE CHOIX */
-/* ============================= */
+/* ================================= */
+/* 4. DEUXIÈME COLONNE : BARRE CHOIX */
+/* ================================= */
 
 .barre_choix {
-    width: 196px;
+    width: 256px;
     height: 100vh;
     flex-shrink: 0;
 
@@ -106,10 +122,7 @@
     border-right: 1px solid #D8D8D8;
 }
 
-
-/* ============================= */
-/* ADRESSE UTILISATEUR */
-/* ============================= */
+/* Adresse utilisateur */
 
 .adresse_utilisateur {
     width: 100%;
@@ -131,10 +144,7 @@
     margin: 0;
 }
 
-
-/* ============================= */
-/* LISTE DES DOSSIERS */
-/* ============================= */
+/* Liste des dossiers */
 
 .liste_dossiers {
     width: 100%;
@@ -143,10 +153,7 @@
     flex-direction: column;
 }
 
-
-/* ============================= */
-/* DOSSIERS */
-/* ============================= */
+/* Dossiers */
 
 .dossier {
     width: 100%;
@@ -168,10 +175,7 @@
     cursor: pointer;
 }
 
-
-/* ============================= */
-/* ICÔNES DES DOSSIERS */
-/* ============================= */
+/* Icônes des dossiers */
 
 .dossier .icon {
     width: 23px;
@@ -190,21 +194,169 @@
     object-fit: contain;
 }
 
-
-/* ============================= */
-/* DOSSIER ACTIF */
-/* ============================= */
+/* Dossier actif */
 
 .dossier.actif {
     background-color: #F5F5F5;
 }
 
-
-/* ============================= */
-/* EFFET AU SURVOL */
-/* ============================= */
+/* Survol des dossiers */
 
 .dossier:hover {
     background-color: #EEEEEE;
 }
 
+
+/* ================================= */
+/* 5. TROISIÈME COLONNE : LISTE DES MESSAGES */
+/* ================================= */
+
+.barre_messages {
+    flex: 1;
+    min-width: 300px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #ffffff;
+    border-right: 1px solid #dcdcdc;
+}
+
+/* En-tête des messages */
+
+.entete_messages {
+    height: 73px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 20px;
+
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.entete_messages h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Liste des messages */
+
+.liste_messages {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Message */
+
+.message {
+    position: relative;
+
+    padding: 15px 20px;
+
+    border-bottom: 1px solid #e5e5e5;
+
+    cursor: pointer;
+}
+
+.message:hover {
+    background-color: #f5f5f5;
+}
+
+/* Informations du message */
+
+.expediteur {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.objet {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.apercu {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #777777;
+}
+
+.date {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+
+    font-size: 12px;
+    color: #777777;
+}
+
+
+/* ================================= */
+/* 6. QUATRIÈME COLONNE : CONTENU DU MESSAGE */
+/* ================================= */
+
+.contenu_message {
+    flex: 1;
+    min-width: 350px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+/* En-tête du contenu */
+
+.entete_contenu {
+    min-height: 73px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 25px;
+
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.entete_contenu h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Informations de l'expéditeur */
+
+.informations_message {
+    position: relative;
+
+    padding: 25px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.informations_message p {
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.informations_message .date_message {
+    margin-top: 12px;
+    color: #777777;
+    font-size: 13px;
+}
+
+/* Corps du message */
+
+.corps_message {
+    padding: 30px 25px;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.corps_message p {
+    margin-bottom: 18px;
+}
