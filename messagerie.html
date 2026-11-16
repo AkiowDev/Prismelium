@@ -1,31 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="messagerie.css">
     <title>Prismelium - Messagerie</title>
 </head>
 <body class="body_messagerie">
     <div class="barre_laterale">
-        <div id="barre_laterale_logo" class>
-            <img src="https://cdn-web.univ-lemans.fr/um_images/logos/logo.svg" id="logo" alt="Logo">
-        </div>
-        <div class="menu_barre_laterale">
-            <span class="actions">Rédiger</span>
-            <span class="actions">Courriel</span>
-            <span class="actions">Contacts</span>
-            <span class="actions">Paramètres</span>   
-        </div>
+    <div id="barre_laterale_logo">
+        <img
+            src="https://cdn-web.univ-lemans.fr/um_images/logos/logo.svg"
+            id="logo"
+            alt="Logo Le Mans Université"
+        >
+    </div>
+    <nav class="sidebar-menu">
+
+        <a href="#" class="menu-item active">
+            <span class="icon"><img src="img/rediger.png" alt="Rédiger"></span>
+            <span>Rédiger</span>
+        </a>
+
+        <a href="#" class="menu-item">
+            <span class="icon"><img src="img/courriel.png" alt="Courriel"></span>
+            <span>Courriel</span>
+        </a>
+
+        <a href="#" class="menu-item">
+            <span class="icon"><img src="img/contacts.png" alt="Contacts"></span>
+            <span>Contacts</span>
+        </a>
+
+        <a href="#" class="menu-item">
+            <span class="icon"><img src="img/parametres.png" alt="Paramètres"></span>
+            <span>Paramètres</span>
+        </a>
+
+    </nav>
     </div>
     <div class="barre_choix">
+        <div class="adresse_utilisateur">
+            <p>Prenom.Nom@univ-lemans.fr</p>
+        </div>
 
+        <div class="liste_dossiers">
+
+            <div class="dossier actif">
+                <span class="icon"><img src="img/reception.png" alt="Boîte de réception"></span>
+                <span>Boîte de réception</span>
+            </div>
+
+            <div class="dossier">
+                <span class="icon"><img src="img/brouillon.png" alt="Brouillons"></span>
+                <span>Brouillons</span>
+            </div>
+
+            <div class="dossier">
+                <span class="icon"><img src="img/envoyes.png" alt="Envoyés"></span>
+                <span>Envoyés</span>
+            </div>
+
+            <div class="dossier">
+                <span class="icon"><img src="img/pourriel.png" alt="Pourriels"></span>
+                <span>Pourriels</span>
+            </div>
+
+            <div class="dossier">
+                <span class="icon"><img src="img/corbeille.png" alt="Corbeille"></span>
+                <span>Corbeille</span>
+            </div>
+        </div>
     </div>
-    <div class="layout_liste">
-
-    </div>
-    <div class="layout_content">    
-
-    </div>
-
 </body>
 </html>
