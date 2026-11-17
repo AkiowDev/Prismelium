@@ -1,14 +1,19 @@
 
 <?php
 
-// Connexion à la base de données
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /Prismelium/Connexion/connexionView.php');
+    exit;
+}
+
 require_once __DIR__ . '/load_database.php';
 
-// Chargement du modèle
 require_once __DIR__ . '/models/Models.php';
 
-// Identifiant du destinataire (temporaire)
-$idDestinataire = 12;
+require_once __DIR__ . '/../Connexion/connexionController.php';
+
+$idDestinataire = $_SESSION['user_id'];
 
 // Initialisation des variables
 $messages = [];

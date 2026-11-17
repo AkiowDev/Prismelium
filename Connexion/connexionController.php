@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once 'connexionModel.php';
 
 $erreur = null;
@@ -15,12 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['Id_User'];
             $_SESSION['user_mail'] = $user['Mail_User'];
             
-            if($user['Id_Role']==3) {
-                header('Location: accueilParticipantView.php');
-            } else {
-                header('Location: accueilView.php');
-            }
+            header('Location: /Prismelium/Messagerie/messagerie.php');
             exit();
+            
         } else {
             $erreur = "Email ou mot de passe incorrect.";
         }
@@ -28,6 +27,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erreur = "Veuillez remplir tous les champs.";
     }
 }
-
-require_once 'connexionView.php';
 ?>

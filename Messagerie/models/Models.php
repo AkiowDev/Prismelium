@@ -33,7 +33,6 @@ function recupererMessages($pdo, $idDestinataire)
     $requete->execute([
         'destinataire' => $idDestinataire
     ]);
-
     return $requete->fetchAll(PDO::FETCH_ASSOC);
 }
 
