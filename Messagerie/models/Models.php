@@ -66,6 +66,7 @@ function recupererMessage($pdo, $idMessage, $idDestinataire)
 
         WHERE messagerie.Id_Msg = :id
         AND messagerie.Id_Destinataire = :destinataire
+        AND messagerie.Statut_Msg = 'envoye'
     ");
 
     $requete->execute([
@@ -93,4 +94,62 @@ function marquerMessageCommeLu($pdo, $idMessage, $idDestinataire)
     ]);
 }
 
+function rechercherDestinataires($pdo, $recherche)
+{
+    $requete = $pdo->prepare("
+        SELECT Id_User, Mail_User
+        FROM UTILISATEUR
+        WHERE Mail_User LIKE :recherche
+        ORDER BY Mail_User ASC
+    ");
+
+    $requete->execute([
+        'recherche' => '%' . $recherche . '%'
+    ]);
+
+    return $requete->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function envoyerMessage($pdo, $idExpediteur, $idDestinataire, $contenu)
+{
+    $requete = $pdo->prepare("
+        INSERT INTO messagerie (Id_Expediteur, Id_Destinataire, Contenu_Msg)
+        VALUES (:expediteur, :destinataire, :contenu)
+    ");
+
+    $requete->execute([
+        'expediteur' => $idExpediteur,
+        'destinataire' => $idDestinataire,
+        'contenu' => $contenu
+    ]);
+}
+
+function enregistrerBrouillon($pdo, $idExpediteur, $idDestinataire, $contenu)
+{
+    $requete = $pdo->prepare("
+        INSERT INTO messagerie (Id_Expediteur, Id_Destinataire, Contenu_Msg, Statut_Msg)
+        VALUES (:expediteur, :destinataire, :contenu, 'brouillon')
+    ");
+
+    $requete->execute([
+        'expediteur' => $idExpediteur,
+        'destinataire' => $idDestinataire,
+        'contenu' => $contenu
+    ]);
+}
+
+function getDestinataire($pdo, $id_destinataire)
+{
+    $requete = $pdo->prepare("
+        SELECT Prenom_User, Nom_User
+        FROM UTILISATEUR
+        WHERE Id_User = :id
+    ");
+
+    $requete->execute([
+        'id' => $id_destinataire
+    ]);
+
+    return $requete->fetch(PDO::FETCH_ASSOC);
+}
 ?>

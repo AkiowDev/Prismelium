@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="messagerie.css">
 
     <title>Prismelium - Messagerie</title>
@@ -33,7 +33,7 @@
 
         <nav class="sidebar-menu">
 
-            <a href="#" class="menu-item active">
+            <a href="rediger.php" class="menu-item active">
                 <span class="icon">
                     <img src="img/rediger.png" alt="Rédiger">
                 </span>

@@ -5,17 +5,14 @@
 require_once __DIR__ . '/load_database.php';
 
 // Chargement du modèle
-require_once __DIR__ . '/models/MessagerieModel.php';
-
+require_once __DIR__ . '/models/Models.php';
 
 // Identifiant du destinataire (temporaire)
 $idDestinataire = 12;
 
-
 // Initialisation des variables
 $messages = [];
 $message_selectionne = null;
-
 
 // Vérification du message sélectionné
 $idMessage = filter_input(
@@ -47,15 +44,13 @@ if ($idMessage !== false && $idMessage !== null && $idMessage > 0) {
     }
 }
 
-
 // Récupérer la liste des messages
 $messages = recupererMessages(
     $pdo,
     $idDestinataire
 );
-return $messages;
 
-// Charger la vue
+// Affichage de la vue
 require __DIR__ . '/views/MessagerieView.php';
 
 ?>
