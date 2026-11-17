@@ -63,10 +63,12 @@
             height: auto;
         }
         .bienvenue {
+            position: absolute;
             left: 358px;
             top: 35px;
         }
         .page {
+            position: absolute;
             left: 358px;
             top: 70px;
         }
