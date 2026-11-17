@@ -25,22 +25,4 @@ function get_user_by_mail($mail){
     return $query->fetch();
 }
 
-function login_user($mail, $password){
-    $bdd = get_bdd();
-    
-    $query = $bdd->prepare('SELECT * FROM utilisateur WHERE Mail_User = ?');
-    $query->execute([$mail]);
-    $user = $query->fetch();
-
-    if (!$user) {
-        return false; 
-    }
-
-    if ($password == $user['Mdp_User']) {
-        return $user;
-    }
-
-    return false; 
-}
-
 ?>
