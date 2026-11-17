@@ -1,7 +1,5 @@
 <?php
-
-include "connexionController.php";
-
+session_start();
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: connexionController.php');
@@ -14,4 +12,10 @@ $current_user_mail = $_SESSION['user_mail'];
 require_once 'connexionModel.php';
 $user = get_user_by_mail($current_user_mail);
 
+$planningDays = [
+    ['date' => date('d/m/Y'), 'events' => '3 événements notés', 'current' => true],
+    ['date' => date('d/m/Y', strtotime('+1 day')), 'events' => '5 événements notés', 'current' => false],
+    ['date' => date('d/m/Y', strtotime('+2 day')), 'events' => '4 événements notés', 'current' => false],
+    ['date' => date('d/m/Y', strtotime('+3 day')), 'events' => '99 événements notés', 'current' => false],
+];
 ?>
