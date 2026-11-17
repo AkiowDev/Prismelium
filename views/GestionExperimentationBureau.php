@@ -25,14 +25,14 @@ $visibleExperiments = array_filter(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gestion des expérimentations — Bureau</title>
-    <link rel="stylesheet" href="stylesGEDesktop.css">
+    <link rel="stylesheet" href="../css/stylesGEDesktop.css">
 </head>
 <body>
     <div class="application">
         <div class="version-bureau">
     <aside class="barre-laterale" aria-label="Navigation principale">
         <a class="barre-laterale__marque" href="#" aria-label="Accueil">
-            <img class="barre-laterale__logo-cerveau" src="assets/brain-logo.png" alt="">
+            <img class="barre-laterale__logo-cerveau" src="../assets/brain-logo.png" alt="">
         </a>
 
         <nav class="barre-laterale__navigation">
@@ -43,20 +43,20 @@ $visibleExperiments = array_filter(
             <a href="#">Paramètres</a>
         </nav>
 
-        <img class="barre-laterale__logo-universite" src="assets/university-logo.png" alt="Le Mans Université">
+        <img class="barre-laterale__logo-universite" src="../assets/university-logo.png" alt="Le Mans Université">
     </aside>
 
     <main class="contenu-principal">
         <header class="entete-page">
             <h1>Gestion des expérimentations</h1>
-            <img class="separateur-page" src="assets/divider.svg" alt="" aria-hidden="true">
+            <img class="separateur-page" src="../assets/divider.svg" alt="" aria-hidden="true">
             <div class="actions-experiences" aria-label="Actions sur les expérimentations">
                 <button type="button">Créer</button>
                 <button type="button">Archiver</button>
                 <button type="button">modifier</button>
                 <button type="button">supprimer</button>
             </div>
-            <img class="separateur-page" src="assets/divider.svg" alt="" aria-hidden="true">
+            <img class="separateur-page" src="../assets/divider.svg" alt="" aria-hidden="true">
         </header>
 
         <section class="section-experiences" aria-labelledby="titre-experiences-bureau">
@@ -64,7 +64,7 @@ $visibleExperiments = array_filter(
                 <h2 id="titre-experiences-bureau">Liste des expérimentations</h2>
                 <form class="recherche" method="get" role="search">
                     <label class="texte-masque" for="recherche-experience-bureau">Rechercher une expérimentation</label>
-                    <img class="recherche__icone" src="assets/search.png" alt="">
+                    <img class="recherche__icone" src="../assets/search.png" alt="">
                     <input
                         id="recherche-experience-bureau"
                         name="q"
@@ -73,7 +73,7 @@ $visibleExperiments = array_filter(
                         value="<?= htmlspecialchars($searchTerm, ENT_QUOTES, 'UTF-8') ?>"
                     >
                     <button class="recherche__filtre" type="button" aria-label="Filtrer les expérimentations">
-                        <img src="assets/filter.svg" alt="">
+                        <img src="../assets/filter.svg" alt="">
                     </button>
                 </form>
             </div>
