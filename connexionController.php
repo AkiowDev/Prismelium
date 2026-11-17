@@ -15,7 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['Id_User'];
             $_SESSION['user_mail'] = $user['Mail_User'];
             
-            header('Location: accueilView.php');
+            if($user['Id_Role']==3) {
+                header('Location: accueilParticipantView.php');
+            } else {
+                header('Location: accueilView.php');
+            }
             exit();
         } else {
             $erreur = "Email ou mot de passe incorrect.";
