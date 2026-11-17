@@ -17,7 +17,7 @@ $recherche = trim($_GET['recherche'] ?? '');
 $contacts = recupererContacts($pdo, $recherche);
 
 // Préparer l'affichage de la messagerie
-$type_messages = 'recus';
+$type_messages = 'contact';
 $message_selectionne = null;
 
 $messages = recupererMessages($pdo, $_SESSION['user_id']);

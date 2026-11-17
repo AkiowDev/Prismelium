@@ -41,13 +41,6 @@
                 <span>Rédiger</span>
             </a>
 
-            <a href="#" class="menu-item">
-                <span class="icon">
-                    <img src="img/courriel.png" alt="Courriel">
-                </span>
-                <span>Courriel</span>
-            </a>
-
             <a href="contacts.php" class="menu-item">
                 <span class="icon">
                     <img src="img/contacts.png" alt="Contacts">
@@ -182,16 +175,12 @@
 
 <div class="contenu_message">
 
-    <?php if (($page ?? '') === 'contacts'): ?>
-
-        <?php require __DIR__ . '/ContactsView.php'; ?>
-
-    <?php else: ?>
-
-        <div class="entete_contenu">
+    <div class="entete_contenu">
             <h2>
                 <?php
-                if ($type_messages === 'envoyes') {
+                if (($page ?? '') === 'contacts') {
+                    echo 'Contacts';
+                } elseif ($type_messages === 'envoyes') {
                     echo 'Messages envoyés';
                 } elseif ($type_messages === 'brouillon') {
                     echo 'Brouillons';
@@ -202,6 +191,14 @@
             </h2>
         </div>
 
+
+    <?php if (($page ?? '') === 'contacts'): ?>
+
+        <?php require __DIR__ . '/ContactsView.php'; ?>
+
+    <?php else: ?>
+
+        
         <?php if ($message_selectionne): ?>
 
             <div class="informations_message">

@@ -5,7 +5,6 @@
 
 <div class="contacts-container">
 
-    <h2>Mes contacts</h2>
 
     <form method="GET" action="contacts.php" class="recherche-contacts">
         <input

@@ -21,7 +21,7 @@ $message_selectionne = null;
 
 $type_messages = $_GET['type'] ?? 'recus';
 
-if (!in_array($type_messages, ['recus', 'envoyes', 'brouillon'], true)) {
+if (!in_array($type_messages, ['recus', 'envoyes', 'brouillon', 'contacts'], true)) {
     $type_messages = 'recus';
 }
 
@@ -61,7 +61,7 @@ if ($idMessage !== false && $idMessage !== null && $idMessage > 0) {
         $messages = recupererMessages($pdo, $_SESSION['user_id']);
     } else if ($type_messages === 'brouillon'){
         $messages = recupererBrouillons($pdo, $_SESSION['user_id']);
-    }
+    } 
 
 // Affichage de la vue
 require __DIR__ . '/views/MessagerieView.php';
