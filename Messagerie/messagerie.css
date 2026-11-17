@@ -1,0 +1,406 @@
+
+/* ================================= */
+/*    RÉINITIALISATION GÉNÉRALE      */
+/* ================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ================================= */
+/*      BODY : PAGE PRINCIPALE       */
+/* ================================= */
+
+.body_messagerie {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+
+/* ================================= */
+/* PREMIÈRE COLONNE : BARRE LATÉRALE */
+/* ================================= */
+
+.barre_laterale {
+    width: 82px;
+    min-width: 82px;
+    height: 100vh;
+    flex-shrink: 0;
+
+    background-color: #29336D;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Logo */
+
+#barre_laterale_logo {
+    width: 100%;
+    height: 75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    width: 44px;
+    height: 53px;
+    object-fit: contain;
+}
+
+/* Menu */
+
+.sidebar-menu {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Boutons du menu */
+
+.menu-item {
+    width: 100%;
+    height: 73px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    text-decoration: none;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* Icônes du menu */
+
+.menu-item .icon img {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+}
+
+/* Bouton actif */
+
+.menu-item.active {
+    background-color: #E8461B;
+}
+
+/* Survol des boutons */
+
+.menu-item:not(.active):hover {
+    background-color: #3C4783;
+}
+
+
+/* ================================= */
+/* DEUXIÈME COLONNE : BARRE CHOIX    */
+/* ================================= */
+
+.barre_choix {
+    width: 256px;
+    height: 100vh;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #FFFFFF;
+    border-right: 1px solid #D8D8D8;
+}
+
+/* Adresse utilisateur */
+
+.adresse_utilisateur {
+    width: 100%;
+    height: 73px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 1px solid #D8D8D8;
+    background-color: #EEEEEE;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #171717;
+}
+
+.adresse_utilisateur p {
+    margin: 0;
+}
+
+/* Liste des dossiers */
+
+.liste_dossiers {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dossiers */
+
+.dossier {
+    width: 100%;
+    height: 37px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+    padding: 0 9px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #171717;
+
+    border-bottom: 1px solid #E4E4E4;
+
+    cursor: pointer;
+}
+
+/* Icônes des dossiers */
+
+.dossier .icon {
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+.dossier .icon img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+}
+
+/* Dossier actif */
+
+.dossier.actif {
+    background-color: #F5F5F5;
+}
+
+/* Survol des dossiers */
+
+.dossier:hover {
+    background-color: #EEEEEE;
+}
+
+
+
+/* ================================= */
+/* TROISIÈME COLONNE : LISTE DES MESSAGES */
+/* ================================= */
+
+.barre_messages {
+    width: 272px;
+    min-width: 272px;
+    height: 100vh;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #FFFFFF;
+    border-right: 1px solid #D8D8D8;
+}
+
+/* Barre d'outils */
+
+.entete_messages {
+    height: 73px;
+    min-height: 73px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #D8D8D8;
+    background-color: #EEEEEE;
+}
+
+.outil_message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.icone_outil {
+    font-size: 25px;
+}
+
+/* Liste des messages */
+
+.liste_messages {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Message individuel */
+
+.message {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+
+    height: 56px;
+    padding: 8px 10px;
+
+    border-bottom: 1px solid #D8D8D8;
+
+    cursor: pointer;
+}
+
+.message:hover {
+    background-color: #F2F2F2;
+}
+
+/* Ligne expéditeur et date */
+
+.ligne_message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.expediteur {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #888888;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.date {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: #888888;
+
+    white-space: nowrap;
+}
+
+/* Contenu affiché sous l'expéditeur */
+
+.objet {
+    margin-top: 8px;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #171717;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ================================= */
+/* QUATRIÈME COLONNE : CONTENU DU MESSAGE */
+/* ================================= */
+
+.contenu_message {
+    flex: 1;
+    min-width: 350px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+/* En-tête du contenu */
+
+.entete_contenu {
+    min-height: 73px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 25px;
+
+    border-bottom: 1px solid #dcdcdc;
+    background-color: #EEEEEE;
+}
+
+.entete_contenu h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Informations de l'expéditeur */
+
+.informations_message {
+    position: relative;
+
+    padding: 25px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.informations_message p {
+    margin-bottom: 6px;
+    font-size: 14px;
+    
+}
+
+.informations_message .date_message {
+    margin-top: 12px;
+    color: #777777;
+    font-size: 13px;
+}
+
+/* Corps du message */
+
+.corps_message {
+    padding: 30px 25px;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.corps_message p {
+    margin-bottom: 18px;
+}
+
+.pas_de_message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#messagerie_vide {
+    width: 50%;
+}

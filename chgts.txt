@@ -1,0 +1,3 @@
+Changements BDD :
+Statut_msg -> messagerie
+mdp_user -> utilisateur
