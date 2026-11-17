@@ -1,153 +1,61 @@
-    <?php
-    require_once 'load_database.php';
 
-    $messages = [];
+<?php
 
-    require_once 'load_messages.php';
-    ?>
+// Connexion à la base de données
+require_once __DIR__ . '/load_database.php';
+
+// Chargement du modèle
+require_once __DIR__ . '/models/MessagerieModel.php';
 
 
+// Identifiant du destinataire (temporaire)
+$idDestinataire = 12;
 
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="messagerie.css">
-        <title>Prismelium - Messagerie</title>
-    </head>
-    <body class="body_messagerie">
-        <div class="barre_laterale">
-        <div id="barre_laterale_logo">
-            <img
-                src="https://cdn-web.univ-lemans.fr/um_images/logos/logo.svg"
-                id="logo"
-                alt="Logo Le Mans Université"
-            >
-        </div>
-        <nav class="sidebar-menu">
 
-            <a href="#" class="menu-item active">
-                <span class="icon"><img src="img/rediger.png" alt="Rédiger"></span>
-                <span>Rédiger</span>
-            </a>
+// Initialisation des variables
+$messages = [];
+$message_selectionne = null;
 
-            <a href="#" class="menu-item">
-                <span class="icon"><img src="img/courriel.png" alt="Courriel"></span>
-                <span>Courriel</span>
-            </a>
 
-            <a href="#" class="menu-item">
-                <span class="icon"><img src="img/contacts.png" alt="Contacts"></span>
-                <span>Contacts</span>
-            </a>
+// Vérification du message sélectionné
+$idMessage = filter_input(
+    INPUT_GET,
+    'message',
+    FILTER_VALIDATE_INT
+);
 
-            <a href="#" class="menu-item">
-                <span class="icon"><img src="img/parametres.png" alt="Paramètres"></span>
-                <span>Paramètres</span>
-            </a>
+if ($idMessage !== false && $idMessage !== null && $idMessage > 0) {
 
-        </nav>
-        </div>
-        <div class="barre_choix">
-            <div class="adresse_utilisateur">
-                <p>Prenom.Nom@univ-lemans.fr</p>
-            </div>
+    // Vérifier que le message appartient au destinataire
+    $message_selectionne = recupererMessage(
+        $pdo,
+        $idMessage,
+        $idDestinataire
+    );
 
-            <div class="liste_dossiers">
+    if ($message_selectionne) {
 
-                <div class="dossier actif">
-                    <span class="icon"><img src="img/reception.png" alt="Boîte de réception"></span>
-                    <span>Boîte de réception</span>
-                </div>
+        // Marquer le message comme lu
+        marquerMessageCommeLu(
+            $pdo,
+            $idMessage,
+            $idDestinataire
+        );
 
-                <div class="dossier">
-                    <span class="icon"><img src="img/brouillon.png" alt="Brouillons"></span>
-                    <span>Brouillons</span>
-                </div>
+        // Actualiser son statut dans les données affichées
+        $message_selectionne['lu_Msg'] = 1;
+    }
+}
 
-                <div class="dossier">
-                    <span class="icon"><img src="img/envoyes.png" alt="Envoyés"></span>
-                    <span>Envoyés</span>
-                </div>
 
-                <div class="dossier">
-                    <span class="icon"><img src="img/pourriel.png" alt="Pourriels"></span>
-                    <span>Pourriels</span>
-                </div>
+// Récupérer la liste des messages
+$messages = recupererMessages(
+    $pdo,
+    $idDestinataire
+);
+return $messages;
 
-                <div class="dossier">
-                    <span class="icon"><img src="img/corbeille.png" alt="Corbeille"></span>
-                    <span>Corbeille</span>
-                </div>
-            </div>
-        </div>
-        <div class="barre_messages">
+// Charger la vue
+require __DIR__ . '/views/MessagerieView.php';
 
-        <!-- Liste des messages -->
-        <div class="liste_messages">
-
-        <div class="entete_messages">
-
-        </div>
-            <?php foreach ($messages as $message): ?>
-
-                <a href="messagerie.php?message=<?= $message['Id_Msg'] ?>" class="message">
-
-                    <div class="ligne_message">
-
-                        <p class="expediteur">
-                            <?= htmlspecialchars($message['Nom_Expediteur'] . ' ' . $message['Prenom_Expediteur'], ENT_QUOTES, 'UTF-8') ?>
-                        </p>
-
-                        <p class="date">
-                            <?= htmlspecialchars($message['Date_Msg'], ENT_QUOTES, 'UTF-8') ?>
-                        </p>
-
-                    </div>
-
-                    <p class="objet">
-                        • <?= htmlspecialchars($message['Contenu_Msg'], ENT_QUOTES, 'UTF-8') ?>
-                    </p>
-
-                </a>
-
-            <?php endforeach; ?>
-
-        </div>
-
-    </div>
-
-        </div>
-        </div>
-        <div class="contenu_message">
-
-        <div class="entete_contenu">
-            <h2>Boîte de réception</h2>
-        </div>
-         <?php if ($message_selectionne): ?>
-        <div class="informations_message">
-            <p><strong>De: <?= htmlspecialchars($message_selectionne['Nom_Expediteur'] . ' ' . $message_selectionne['Prenom_Expediteur'], ENT_QUOTES, 'UTF-8') ?></strong></p>
-            <p><?= htmlspecialchars($message_selectionne['Mail_Expediteur'], ENT_QUOTES, 'UTF-8') ?></p>
-            <p><?= htmlspecialchars($message_selectionne['Date_Msg'], ENT_QUOTES, 'UTF-8') ?></p>
-            <p><strong>À: <?= htmlspecialchars($message_selectionne['Nom_Destinataire'] . ' ' . $message_selectionne['Prenom_Destinataire'], ENT_QUOTES, 'UTF-8') ?></strong></p>
-        </div>
-
-        <div class="corps_message">
-            <p><?= nl2br(htmlspecialchars($message_selectionne['Contenu_Msg'], ENT_QUOTES, 'UTF-8')) ?></p>
-        </div>
-            <?php else: ?>
-
-                <div class="pas_de_message">
-                    <img src="img/lmu_messVide.png"
-                         id="messagerie_vide"
-                         alt="Logo Le Mans Université">
-                </div>
-
-    <?php endif; ?>
-
-    </div>
-
-    </div>
-    </body>
-</html>
+?>

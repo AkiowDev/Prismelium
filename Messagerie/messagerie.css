@@ -266,17 +266,18 @@
 
 .message {
     display: block;
+    box-sizing: border-box;
     text-decoration: none;
     color: inherit;
 
-    height: 56px;
+    min-height: 56px;
+    height: auto;
     padding: 8px 10px;
 
     border-bottom: 1px solid #D8D8D8;
 
     cursor: pointer;
 }
-
 .message:hover {
     background-color: #F2F2F2;
 }
@@ -339,6 +340,32 @@
     overflow-y: auto;
 }
 
+/* Messages non lus */
+.message.non_lu {
+    background-color: #EEF3FF;
+}
+
+.message.non_lu .expediteur,
+.message.non_lu .objet {
+    font-weight: bold;
+    color: #29336D;
+}
+
+.message.lu {
+    background-color: #FFFFFF;
+}
+
+.message.lu .expediteur,
+.message.lu .objet {
+    font-weight: normal;
+    color: #888888;
+}
+
+/* Survol */
+.message:hover {
+    background-color: #E1E8F8;
+}
+
 /* En-tête du contenu */
 
 .entete_contenu {
@@ -397,10 +424,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
     width: 100%;
-    height: 100%;
+    min-height: 0;
 }
 
 #messagerie_vide {
     width: 50%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
 }
