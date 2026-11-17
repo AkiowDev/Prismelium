@@ -31,8 +31,8 @@
 /* ================================= */
 
 .barre_laterale {
-    width: 82px;
-    min-width: 82px;
+    width: 90px;
+    min-width: 90px;
     height: 100vh;
     flex-shrink: 0;
 
@@ -435,4 +435,104 @@
     max-width: 600px;
     height: auto;
     object-fit: contain;
+}
+
+
+/* ============================= */
+/* PAGE CONTACTS                  */
+/* ============================= */
+
+.contacts-container {
+    padding: 25px 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Barre de recherche */
+
+.recherche-contacts {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.recherche-contacts input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #d8dce5;
+    border-radius: 10px;
+    outline: none;
+    font-family: 'Poppins';
+    font-size: 13px;
+    background-color: #f8f9fc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.recherche-contacts input:focus {
+    border-color: #7185d8;
+    box-shadow: 0 0 0 3px rgba(113, 133, 216, 0.12);
+}
+
+.recherche-contacts button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #7185d8;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.recherche-contacts button:hover {
+    background-color: #586fc5;
+}
+
+/* Liste des contacts */
+
+.liste-contacts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* Carte d'un contact */
+
+.contact {
+    padding: 16px 20px;
+    border: 1px solid #e5e8ef;
+    border-radius: 12px;
+    background-color: white;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.contact:hover {
+    background-color: #f8f9fc;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact h3 {
+    margin: 0 0 4px 0;
+    color: #30384a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.contact p {
+    margin: 0;
+    color: #858c9c;
+    font-size: 12px;
+}
+
+/* Aucun résultat */
+
+.liste-contacts > p {
+    color: #858c9c;
+    font-size: 13px;
+    text-align: center;
+    padding: 25px;
 }

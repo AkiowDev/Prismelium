@@ -55,6 +55,13 @@
                 <span>Paramètres</span>
             </a>
 
+            <a href="Deconnexion.php" class="menu-item">
+                <span class="icon">
+                    <img src="img/Deconnexion.png" alt="Deconnexion">
+                </span>
+                <span>Deconnexion</span>
+            </a>
+
         </nav>
 
     </div>

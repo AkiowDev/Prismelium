@@ -2,9 +2,9 @@
 /** @var array $contacts */
 
 ?>
+<link rel="stylesheet" href="messagerie.css">
 
 <div class="contacts-container">
-
 
     <form method="GET" action="contacts.php" class="recherche-contacts">
         <input
