@@ -26,6 +26,7 @@ function recupererMessages($pdo, $idDestinataire)
             ON messagerie.Id_Destinataire = destinataire.Id_User
 
         WHERE messagerie.Id_Destinataire = :destinataire
+        AND messagerie.Statut_Msg = 'envoye'
 
         ORDER BY messagerie.Date_Msg DESC
     ");
@@ -36,9 +37,79 @@ function recupererMessages($pdo, $idDestinataire)
     return $requete->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function recupererBrouillons($pdo, $idDestinataire)
+{
+    $requete = $pdo->prepare("
+        SELECT
+            emetteur.Nom_User AS Nom_Expediteur,
+            emetteur.Prenom_User AS Prenom_Expediteur,
 
-// Récupérer un message précis
-function recupererMessage($pdo, $idMessage, $idDestinataire)
+            destinataire.Nom_User AS Nom_Destinataire,
+            destinataire.Prenom_User AS Prenom_Destinataire,
+
+            messagerie.Id_Msg,
+            messagerie.Date_Msg,
+            messagerie.Contenu_Msg,
+            messagerie.lu_Msg
+
+        FROM messagerie
+
+        INNER JOIN utilisateur AS emetteur
+            ON messagerie.Id_Expediteur = emetteur.Id_User
+
+        INNER JOIN utilisateur AS destinataire
+            ON messagerie.Id_Destinataire = destinataire.Id_User
+
+        WHERE messagerie.Id_Expediteur = :emetteur
+        AND messagerie.Statut_Msg = 'brouillon'
+
+        ORDER BY messagerie.Date_Msg DESC
+    ");
+
+    $requete->execute([
+        'emetteur' => $idDestinataire
+    ]);
+    return $requete->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function recupererMessagesEnvoyes($pdo, $idExpediteur)
+{
+    $requete = $pdo->prepare("
+    SELECT
+        emetteur.Nom_User AS Nom_Expediteur,
+        emetteur.Prenom_User AS Prenom_Expediteur,
+
+        destinataire.Nom_User AS Nom_Destinataire,
+        destinataire.Prenom_User AS Prenom_Destinataire,
+
+        messagerie.Id_Msg,
+        messagerie.Date_Msg,
+        messagerie.Contenu_Msg,
+        messagerie.lu_Msg
+
+    FROM messagerie
+
+    INNER JOIN utilisateur AS emetteur
+        ON messagerie.Id_Expediteur = emetteur.Id_User
+
+    INNER JOIN utilisateur AS destinataire
+        ON messagerie.Id_Destinataire = destinataire.Id_User
+
+    WHERE messagerie.Id_Expediteur = :expediteur
+    AND messagerie.Statut_Msg = 'envoye'
+
+    ORDER BY messagerie.Date_Msg DESC
+    ");
+
+    $requete->execute([
+        'expediteur' => $idExpediteur
+    ]);
+
+    return $requete->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+function recupererMessage($pdo, $idMessage, $idUtilisateur, $type_messages)
 {
     $requete = $pdo->prepare("
         SELECT
@@ -64,13 +135,24 @@ function recupererMessage($pdo, $idMessage, $idDestinataire)
             ON messagerie.Id_Destinataire = destinataire.Id_User
 
         WHERE messagerie.Id_Msg = :id
-        AND messagerie.Id_Destinataire = :destinataire
-        AND messagerie.Statut_Msg = 'envoye'
+        AND (
+            (:type = 'brouillon' AND messagerie.Statut_Msg = 'brouillon')
+            OR
+            (:type IN ('recus', 'envoyes') AND messagerie.Statut_Msg = 'envoye')
+        )
+        AND (
+        (:type = 'recus' AND messagerie.Id_Destinataire = :utilisateur)
+        OR
+        (:type = 'envoyes' AND messagerie.Id_Expediteur = :utilisateur)
+        OR
+        (:type = 'brouillon' AND messagerie.Id_Expediteur = :utilisateur)
+        )
     ");
 
     $requete->execute([
         'id' => $idMessage,
-        'destinataire' => $idDestinataire
+        'type' => $type_messages,
+        'utilisateur' => $idUtilisateur
     ]);
 
     return $requete->fetch(PDO::FETCH_ASSOC);
@@ -112,8 +194,8 @@ function rechercherDestinataires($pdo, $recherche)
 function envoyerMessage($pdo, $idExpediteur, $idDestinataire, $contenu)
 {
     $requete = $pdo->prepare("
-        INSERT INTO messagerie (Id_Expediteur, Id_Destinataire, Contenu_Msg)
-        VALUES (:expediteur, :destinataire, :contenu)
+        INSERT INTO messagerie (Id_Expediteur, Id_Destinataire, Contenu_Msg, Statut_Msg)
+        VALUES (:expediteur, :destinataire, :contenu, 'envoye')
     ");
 
     $requete->execute([
@@ -151,4 +233,29 @@ function getDestinataire($pdo, $id_destinataire)
 
     return $requete->fetch(PDO::FETCH_ASSOC);
 }
+
+
+// Récupérer et rechercher les contacts
+function recupererContacts($pdo, $recherche = '')
+{
+    $requete = $pdo->prepare("
+        SELECT Id_User, Nom_User, Prenom_User, Mail_User
+        FROM UTILISATEUR
+        WHERE Nom_User LIKE :recherche_nom
+        OR Prenom_User LIKE :recherche_prenom
+        OR Mail_User LIKE :recherche_mail
+        ORDER BY Nom_User ASC, Prenom_User ASC
+    ");
+
+    $recherche = '%' . $recherche . '%';
+
+    $requete->execute([
+        'recherche_nom' => $recherche,
+        'recherche_prenom' => $recherche,
+        'recherche_mail' => $recherche
+    ]);
+
+    return $requete->fetchAll(PDO::FETCH_ASSOC);
+}
+
 ?>

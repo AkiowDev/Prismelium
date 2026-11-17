@@ -11,13 +11,19 @@ require_once __DIR__ . '/load_database.php';
 
 require_once __DIR__ . '/models/Models.php';
 
-require_once __DIR__ . '/../Connexion/connexionController.php';
 
 $idDestinataire = $_SESSION['user_id'];
+$idUtilisateur = $_SESSION['user_id'];
 
 // Initialisation des variables
 $messages = [];
 $message_selectionne = null;
+
+$type_messages = $_GET['type'] ?? 'recus';
+
+if (!in_array($type_messages, ['recus', 'envoyes', 'brouillon'], true)) {
+    $type_messages = 'recus';
+}
 
 // Vérification du message sélectionné
 $idMessage = filter_input(
@@ -32,28 +38,30 @@ if ($idMessage !== false && $idMessage !== null && $idMessage > 0) {
     $message_selectionne = recupererMessage(
         $pdo,
         $idMessage,
+        $_SESSION['user_id'],
+        $type_messages
+    );
+
+    if ($message_selectionne && $type_messages === 'recus') {
+
+    marquerMessageCommeLu(
+        $pdo,
+        $idMessage,
         $idDestinataire
     );
 
-    if ($message_selectionne) {
-
-        // Marquer le message comme lu
-        marquerMessageCommeLu(
-            $pdo,
-            $idMessage,
-            $idDestinataire
-        );
-
-        // Actualiser son statut dans les données affichées
-        $message_selectionne['lu_Msg'] = 1;
+    $message_selectionne['lu_Msg'] = 1;
     }
 }
 
-// Récupérer la liste des messages
-$messages = recupererMessages(
-    $pdo,
-    $idDestinataire
-);
+    // Récupérer la liste des messages
+    if ($type_messages === 'envoyes') {
+        $messages = recupererMessagesEnvoyes($pdo, $_SESSION['user_id']);
+    } else if ($type_messages === 'recus'){
+        $messages = recupererMessages($pdo, $_SESSION['user_id']);
+    } else if ($type_messages === 'brouillon'){
+        $messages = recupererBrouillons($pdo, $_SESSION['user_id']);
+    }
 
 // Affichage de la vue
 require __DIR__ . '/views/MessagerieView.php';

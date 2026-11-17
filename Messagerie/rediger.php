@@ -6,7 +6,9 @@ require_once __DIR__ . '/load_database.php';
 // Chargement du modèle
 require_once __DIR__ . '/models/Models.php';
 
-$idExpediteur = 12;
+session_start();
+
+$idExpediteur = $_SESSION['user_id'];
 
 $recherche = '';
 $utilisateurs = [];

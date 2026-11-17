@@ -1,8 +1,9 @@
 
-
 <?php
 /** @var array $messages */
 /** @var array|null $message_selectionne */
+/** @var string $type_messages */
+/** @var string|null $page */
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +48,7 @@
                 <span>Courriel</span>
             </a>
 
-            <a href="#" class="menu-item">
+            <a href="contacts.php" class="menu-item">
                 <span class="icon">
                     <img src="img/contacts.png" alt="Contacts">
                 </span>
@@ -76,26 +77,30 @@
 
         <div class="liste_dossiers">
 
-            <div class="dossier actif">
+            <a href="messagerie.php?type=recus"
+                class="dossier <?= $type_messages === 'recus' ? 'actif' : '' ?>">
                 <span class="icon">
                     <img src="img/reception.png" alt="Boîte de réception">
                 </span>
                 <span>Boîte de réception</span>
-            </div>
+            </a>
 
-            <div class="dossier">
+            <a href="messagerie.php?type=brouillon"
+                class="dossier <?= $type_messages === 'brouillon' ? 'actif' : '' ?>">
                 <span class="icon">
-                    <img src="img/brouillon.png" alt="Brouillons">
+                    <img src="img/brouillon.png" alt="Brouillon">
                 </span>
                 <span>Brouillons</span>
-            </div>
+            </a>
 
-            <div class="dossier">
+            <a href="messagerie.php?type=envoyes"
+            class="dossier <?= $type_messages === 'envoyes' ? 'actif' : '' ?>">
                 <span class="icon">
                     <img src="img/envoyes.png" alt="Envoyés">
                 </span>
                 <span>Envoyés</span>
-            </div>
+            </a>
+
 
             <div class="dossier">
                 <span class="icon">
@@ -128,26 +133,29 @@
             <?php foreach ($messages as $message): ?>
 
                 <a
-                    href="messagerie.php?message=<?= (int)$message['Id_Msg'] ?>"
+                    href="messagerie.php?type=<?= htmlspecialchars($type_messages, ENT_QUOTES, 'UTF-8') ?>&message=<?= (int)$message['Id_Msg'] ?>"
                     class="message <?= (int)$message['lu_Msg'] === 0 ? 'non_lu' : 'lu' ?>"
                 >
 
                     <div class="ligne_message">
 
                         <p class="expediteur">
-                            <?= htmlspecialchars(
-                                $message['Nom_Expediteur'] . ' ' . $message['Prenom_Expediteur'],
-                                ENT_QUOTES,
-                                'UTF-8'
-                            ) ?>
-                        </p>
-
-                        <p class="date">
-                            <?= htmlspecialchars(
-                                $message['Date_Msg'],
-                                ENT_QUOTES,
-                                'UTF-8'
-                            ) ?>
+                            <?php
+                                if ($type_messages === 'envoyes' || $type_messages === 'brouillon') {
+                                    echo htmlspecialchars(
+                                        $message['Prenom_Destinataire'] . ' ' . $message['Nom_Destinataire'],
+                                        ENT_QUOTES,
+                                        'UTF-8'
+                                    );
+                                } else {
+                                    echo htmlspecialchars(
+                                        $message['Prenom_Expediteur'] . ' ' . $message['Nom_Expediteur'],
+                                        ENT_QUOTES,
+                                        'UTF-8'
+                                    );
+                                }
+                                
+                            ?>
                         </p>
 
                     </div>
@@ -169,12 +177,29 @@
     </div>
 
 
-    <!-- QUATRIÈME COLONNE : CONTENU DU MESSAGE -->
 
-    <div class="contenu_message">
+<!-- QUATRIÈME COLONNE : CONTENU DU MESSAGE -->
+
+<div class="contenu_message">
+
+    <?php if (($page ?? '') === 'contacts'): ?>
+
+        <?php require __DIR__ . '/ContactsView.php'; ?>
+
+    <?php else: ?>
 
         <div class="entete_contenu">
-            <h2>Boîte de réception</h2>
+            <h2>
+                <?php
+                if ($type_messages === 'envoyes') {
+                    echo 'Messages envoyés';
+                } elseif ($type_messages === 'brouillon') {
+                    echo 'Brouillons';
+                } else {
+                    echo 'Boîte de réception';
+                }
+                ?>
+            </h2>
         </div>
 
         <?php if ($message_selectionne): ?>
@@ -193,19 +218,11 @@
                 </p>
 
                 <p>
-                    <?= htmlspecialchars(
-                        $message_selectionne['Mail_Expediteur'],
-                        ENT_QUOTES,
-                        'UTF-8'
-                    ) ?>
+                    <?= htmlspecialchars($message_selectionne['Mail_Expediteur'], ENT_QUOTES, 'UTF-8') ?>
                 </p>
 
                 <p>
-                    <?= htmlspecialchars(
-                        $message_selectionne['Date_Msg'],
-                        ENT_QUOTES,
-                        'UTF-8'
-                    ) ?>
+                    <?= htmlspecialchars($message_selectionne['Date_Msg'], ENT_QUOTES, 'UTF-8') ?>
                 </p>
 
                 <p>
@@ -222,7 +239,6 @@
             </div>
 
             <div class="corps_message">
-
                 <p>
                     <?= nl2br(htmlspecialchars(
                         $message_selectionne['Contenu_Msg'],
@@ -230,24 +246,24 @@
                         'UTF-8'
                     )) ?>
                 </p>
-
             </div>
 
         <?php else: ?>
 
             <div class="pas_de_message">
-
                 <img
                     src="img/lmu_messVide.png"
                     id="messagerie_vide"
                     alt="Logo Le Mans Université"
                 >
-
             </div>
 
         <?php endif; ?>
 
-    </div>
+    <?php endif; ?>
+
+</div>
+
 
 </body>
 </html>
