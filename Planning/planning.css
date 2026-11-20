@@ -107,17 +107,167 @@ input {
 /* CONTENU PRINCIPAL */
 
 .contenu-principal {
-    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     margin-left: var(--sidebar-width);
-    padding: 0 70px 48px;
+    padding: 30px 60px;
 }
 
 /* TITRE */
-
-.title {
+.title h1 {
     margin: 0;
-    padding-top: 10px;
-    color: var(--title-color);
-    font-size: 1.5em
+    color: #d4451b;
+    font-size: 40px;
 }
 
+/* PROFIL + PHOTO */
+.profil {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nom_user h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.photo-profil {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* BOUTON I ORANGE*/
+
+.i-button {
+    width: 50px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* PAGE PLANNING */
+.indic-page {
+    margin-left: var(--sidebar-width);
+    padding: 0px 60px;
+    color: #d4451b;
+    font-size: 20px;
+}
+
+/* COMMANDES DU PLANNING */
+
+.commandes-planning {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-left: var(--sidebar-width);
+    padding: 10px 20px;
+}
+
+/* LISTE DEROULANTE */
+
+.selection-experimentation select {
+    width: 245px;
+    height: 30px;
+
+    padding: 0 8px;
+
+    border: 1px solid #ccc;
+    background-color: white;
+
+    font-family: inherit;
+    font-size: 12px;
+    color: #555;
+
+    cursor: pointer;
+}
+
+/* NAVIGATION DES SEMAINES */
+
+.navigation-semaines {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navigation-semaines button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #1976bd;
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.navigation-semaines button:hover {
+    background-color: #125b91;
+}
+
+/* GRILLE DU PLANNING */
+
+.grille-planning {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+}
+
+
+/* EN-TETE DES JOURS */
+
+.jours-planning {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    height: 44px;
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+    background: white;
+}
+
+.jour {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-right: 1px solid #aaa;
+
+    color: #888;
+    font-size: 11px;
+}
+
+.jour strong {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+/* CORPS DE LA GRILLE */
+
+.grille-creneaux {
+    height: 348px;
+
+    background-color: white;
+
+    background-image:
+        linear-gradient(to right, #aaa 1px, transparent 1px);
+
+    background-size:
+        calc(100% / 6) 100%,
+        100% 29px;
+
+    background-repeat: repeat;
+}
