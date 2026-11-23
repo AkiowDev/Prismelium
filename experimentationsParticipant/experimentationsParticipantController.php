@@ -13,6 +13,7 @@ $experiments = [];
 foreach ($exp as $row) {
     $title = (string) ($row['Nom_Exp'] ?? '');
     $key = (string) ($row['Id_Exp'] ?? $title);
+    $id = (string) ($row['Id_Exp'] ?? '');
 
     if (!isset($_SESSION['experiment_colors'][$key])) {
         $_SESSION['experiment_colors'][$key] = sprintf('#%06X', random_int(0, 0xFFFFFF));
@@ -21,6 +22,7 @@ foreach ($exp as $row) {
     $experiments[] = [
         'title' => $title,
         'color' => $_SESSION['experiment_colors'][$key],
+        'id' => $id,
     ];
 }
 

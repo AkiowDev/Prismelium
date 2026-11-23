@@ -50,14 +50,18 @@
                 <div class="grille-experiences">
                     <?php foreach ($visibleExperiments as $index => $experiment): ?>
                         <article class="carte-experience" aria-label="<?= htmlspecialchars($experiment['title'], ENT_QUOTES, 'UTF-8') ?> <?= $index + 1 ?>">
-                            <div
-                                class="carte-experience__couleur"
-                                style="--couleur-carte: <?= htmlspecialchars($experiment['color'], ENT_QUOTES, 'UTF-8') ?>"
-                                aria-hidden="true"
-                            ></div>
-                            <div class="carte-experience__intitule">
-                                <?= htmlspecialchars($experiment['title'], ENT_QUOTES, 'UTF-8') ?>
-                            </div>
+                            <a href="http://localhost/Prismelium/Prismelium/experimentationParticipant/experimentationParticipantView.php?id=<?= urlencode((string) ($experiment['id'] ?? $index)) ?>" class="carte-experience__lien"
+                                class="carte-experience__lien"
+                            >
+                                <div
+                                    class="carte-experience__couleur"
+                                    style="--couleur-carte: <?= htmlspecialchars($experiment['color'], ENT_QUOTES, 'UTF-8') ?>"
+                                    aria-hidden="true"
+                                ></div>
+                                <div class="carte-experience__intitule">
+                                    <?= htmlspecialchars($experiment['title'], ENT_QUOTES, 'UTF-8') ?>
+                                </div>
+                            </a>
                         </article>
                     <?php endforeach; ?>
                 </div>
