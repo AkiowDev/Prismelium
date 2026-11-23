@@ -6,6 +6,7 @@
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Expérimentations — LIUM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="experimentationsParticipant.css">
 </head>
 <body>
@@ -37,7 +38,7 @@
                         name="q"
                         type="search"
                         placeholder="Rechercher"
-                        value="<?= htmlspecialchars($searchTerm, ENT_QUOTES, 'UTF-8') //Voir controller apres html/css fini ?>"
+                        value="<?= htmlspecialchars($searchTerm, ENT_QUOTES, 'UTF-8') ?>"
                     >
                     <button class="recherche__filtre" type="button" aria-label="Filtrer les expérimentations">
                         <img src="../images/filter.svg" alt="">
