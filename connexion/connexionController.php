@@ -16,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_mail'] = $user['Mail_User'];
             
             if($user['Id_Role']==3) {
-                header('Location: accueilParticipantView.php');
+                header('Location: ../accueilParticipant/accueilParticipantView.php');
             } else {
-                header('Location: accueilView.php');
+                header('Location: ../accueilView.php');
             }
             exit();
         } else {
