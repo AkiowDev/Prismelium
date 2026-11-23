@@ -69,6 +69,13 @@ body {
     line-height: 1.15;
 }
 
+.planning__vide {
+    margin: 24px 0;
+    color: #282f63;
+    font-size: 18px;
+    text-align: center;
+}
+
 .planning__statut {
     width: 27px;
     height: 24px;
@@ -168,6 +175,14 @@ body {
     border-radius: 14px;
     background: #fff;
     padding: 14px 16px;
+}
+
+.activites__vide {
+    border-radius: 12px;
+    background: #fff;
+    color: #555;
+    padding: 18px;
+    text-align: center;
 }
 
 .activites__marque {

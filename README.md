@@ -1,2 +1,2 @@
 # Prismelium
-Espace de travail pour Prismelium
+Espace de travail pour Prismelium.

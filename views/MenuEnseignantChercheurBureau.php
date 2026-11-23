@@ -1,37 +1,57 @@
 <?php
-$planningDays = [
-    ['date' => 'Mercredi 25 mars 2026', 'events' => '3 événements notés', 'current' => true],
-    ['date' => 'Jeudi 26 mars 2026', 'events' => '5 événements notés', 'current' => false],
-    ['date' => 'Vendredi 27 mars 2026', 'events' => '4 événements notés', 'current' => false],
-    ['date' => 'Samedi 28 mars 2026', 'events' => '99 événements notés', 'current' => false],
-];
+declare(strict_types=1);
 
-$recentActivities = [
-    [
-        'type' => 'experimentation',
-        'title' => 'Expérimentation créée',
-        'description' => 'Étude sur la mémoire visuelle',
-        'time' => 'Aujourd’hui, 10:42',
-    ],
-    [
-        'type' => 'inscription',
-        'title' => 'Inscription validée',
-        'description' => 'Participation confirmée à une étude',
-        'time' => 'Aujourd’hui, 09:18',
-    ],
-    [
-        'type' => 'planning',
-        'title' => 'Planning mis à jour',
-        'description' => 'Séance du 28 mars ajoutée',
-        'time' => 'Hier, 16:30',
-    ],
-    [
-        'type' => 'retribution',
-        'title' => 'Rétribution enregistrée',
-        'description' => 'Versement ajouté au suivi',
-        'time' => 'Hier, 14:05',
-    ],
-];
+require_once __DIR__ . '/../BDD_control/current_researcher.php';
+
+$planningQuery = $pdo->prepare(
+    'SELECT s.Date_Ses, COUNT(*) AS SessionCount
+     FROM `SESSION` s
+     INNER JOIN EXPERIMENTATION e ON e.Id_Exp = s.Id_Exp
+     WHERE e.Id_Equipe = :team_id AND s.Date_Ses >= CURRENT_DATE
+     GROUP BY s.Date_Ses
+     ORDER BY s.Date_Ses
+     LIMIT 4'
+);
+$planningQuery->execute(['team_id' => $currentTeamId]);
+$planningDays = [];
+foreach ($planningQuery->fetchAll() as $day) {
+    $dayDate = new DateTimeImmutable($day['Date_Ses']);
+    $planningDays[] = [
+        'date' => $dayDate->format('d/m/Y'),
+        'events' => (int) $day['SessionCount'] . ' séance(s)',
+        'current' => $dayDate->format('Y-m-d') === date('Y-m-d'),
+    ];
+}
+
+$activityQuery = $pdo->prepare(
+    'SELECT Type_Log, Date_Log, Erreur_Log
+     FROM JOURNAL_LOG
+     WHERE Id_User = :user_id
+     ORDER BY Date_Log DESC
+     LIMIT 4'
+);
+$activityQuery->execute(['user_id' => (int) $currentUser['Id_User']]);
+$recentActivities = [];
+foreach ($activityQuery->fetchAll() as $activity) {
+    $type = (string) $activity['Type_Log'];
+    $normalizedType = strtolower($type);
+    $category = str_contains($normalizedType, 'inscription')
+        ? 'inscription'
+        : (str_contains($normalizedType, 'retribution') || str_contains($normalizedType, 'rétribution')
+            ? 'retribution'
+            : (str_contains($normalizedType, 'planning') || str_contains($normalizedType, 'séance')
+                ? 'planning'
+                : 'experimentation'));
+
+    $recentActivities[] = [
+        'type' => $category,
+        'title' => $type,
+        'description' => $activity['Erreur_Log'] ?: 'Activité enregistrée pour votre compte.',
+        'time' => (new DateTimeImmutable($activity['Date_Log']))->format('d/m/Y H:i'),
+    ];
+}
+
+$escape = static fn ($value): string => htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -39,21 +59,21 @@ $recentActivities = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Menu enseignant-chercheur — Bureau</title>
-    <link rel="stylesheet" href="../css/stylesGEDesktop.css">
-    <link rel="stylesheet" href="../css/stylesMenuEnseignantChercheurDesktop.css">
+    <link rel="stylesheet" href="../css/stylesGEDesktop.css?v=2">
+    <link rel="stylesheet" href="../css/stylesMenuEnseignantChercheurDesktop.css?v=2">
 </head>
 <body>
     <div class="application">
         <div class="version-bureau">
             <aside class="barre-laterale" aria-label="Navigation principale">
-                <a class="barre-laterale__marque" href="#" aria-label="Accueil">
+                <a class="barre-laterale__marque" href="./MenuEnseignantChercheurBureau.php" aria-label="Accueil">
                     <img class="barre-laterale__logo-cerveau" src="../assets/brain-logo.png" alt="">
                 </a>
 
                 <nav class="barre-laterale__navigation">
                     <a href="#">Rétributions</a>
                     <a href="./GestionExperimentationBureau.php">Expérimentations</a>
-                    <a href="#planning">Gestion Planning</a>
+                    <a href="#">Gestion Planning</a>
                     <a href="#">Messagerie</a>
                     <a href="#">Paramètres</a>
                 </nav>
@@ -69,8 +89,8 @@ $recentActivities = [
                         <?php foreach ($planningDays as $day): ?>
                             <article class="planning__jour">
                                 <div class="planning__informations">
-                                    <p class="planning__date"><?= htmlspecialchars($day['date'], ENT_QUOTES, 'UTF-8') ?></p>
-                                    <p class="planning__evenements"><?= htmlspecialchars($day['events'], ENT_QUOTES, 'UTF-8') ?></p>
+                                    <p class="planning__date"><?= $escape($day['date']) ?></p>
+                                    <p class="planning__evenements"><?= $escape($day['events']) ?></p>
                                 </div>
                                 <img
                                     class="planning__statut"
@@ -80,12 +100,15 @@ $recentActivities = [
                                 >
                             </article>
                         <?php endforeach; ?>
+                        <?php if ($planningDays === []): ?>
+                            <p class="planning__vide">Aucune séance à venir.</p>
+                        <?php endif; ?>
                     </div>
                 </section>
 
                 <div class="menu-enseignant-chercheur__tableau">
                     <header class="menu-enseignant-chercheur__entete">
-                        <h1 class="menu-enseignant-chercheur__bienvenue">Bienvenue&nbsp;!</h1>
+                        <h1 class="menu-enseignant-chercheur__bienvenue">Bienvenue !</h1>
                     </header>
 
                     <nav class="actions-menu" aria-label="Accès rapides">
@@ -97,7 +120,7 @@ $recentActivities = [
 
                     <section class="activites" aria-labelledby="titre-activites-bureau">
                         <div class="activites__entete">
-                            <h2 class="activites__titre" id="titre-activites-bureau">Dernières activités&nbsp;:</h2>
+                            <h2 class="activites__titre" id="titre-activites-bureau">Dernières activités:</h2>
                         </div>
                         <div class="activites__panneau" role="region" aria-labelledby="titre-activites-bureau">
                             <ul class="activites__liste">
@@ -105,12 +128,15 @@ $recentActivities = [
                                     <li class="activites__element">
                                         <span class="activites__marque activites__marque--<?= htmlspecialchars($activity['type'], ENT_QUOTES, 'UTF-8') ?>" aria-hidden="true"></span>
                                         <div class="activites__contenu">
-                                            <h3><?= htmlspecialchars($activity['title'], ENT_QUOTES, 'UTF-8') ?></h3>
-                                            <p><?= htmlspecialchars($activity['description'], ENT_QUOTES, 'UTF-8') ?></p>
+                                            <h3><?= $escape($activity['title']) ?></h3>
+                                            <p><?= $escape($activity['description']) ?></p>
                                         </div>
-                                        <span class="activites__heure"><?= htmlspecialchars($activity['time'], ENT_QUOTES, 'UTF-8') ?></span>
+                                        <span class="activites__heure"><?= $escape($activity['time']) ?></span>
                                     </li>
                                 <?php endforeach; ?>
+                                <?php if ($recentActivities === []): ?>
+                                    <li class="activites__vide">Aucune activité enregistrée pour le moment.</li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </section>
