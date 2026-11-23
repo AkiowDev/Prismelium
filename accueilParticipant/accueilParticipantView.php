@@ -16,7 +16,7 @@
                 <img class="barre-laterale__logo-cerveau" src="../images/brain-logo.png" alt="">
             </a>
             <nav class="barre-laterale__navigation">
-                <a href="#">Expérimentations</a>
+                <a href="http://localhost/Prismelium/Prismelium/experimentationsParticipant/experimentationsParticipantView.php">Expérimentations</a>
                 <a href="#">Messagerie</a>
                 <a href="#">Planning</a>
                 <a href="#">Paramètres</a>
@@ -31,7 +31,7 @@
             <div class="contenu-accueil">
                 <section class="planning" id="planning" aria-labelledby="titre-planning-bureau">
                     <h2 class="planning__titre" id="titre-planning-bureau">Planning</h2>
-    
+
                     <div class="planning__liste">
                         <?php if (!empty($planningDays)): ?>
                             <?php foreach ($planningDays as $day): ?>
@@ -61,7 +61,7 @@
                             <span class="carte__titre">Planning</span>
                         </div>
                     </a>
-                            
+
                     <a href="#" class="carte carte--experimentation">
                         <div class="carte__visuel">
                             <img src="../images/experimentations.png" alt="Illustration Prochaine expérimentation">
