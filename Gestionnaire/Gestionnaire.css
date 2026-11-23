@@ -157,3 +157,84 @@ input {
     color: #d4451b;
     font-size: 20px;
 }
+
+
+/* PLANNING */
+
+.planning {
+    width: 335px;
+    min-height: 415px;
+    margin-left: calc(var(--sidebar-width) + 37px);
+    margin-top: 28px;
+    padding: 11px;
+    background-color: #ff7958;
+    border: 10px solid #df4018;
+    border-radius: 15px;
+}
+
+/* ENTETE DU PLANNING */
+
+.planning__entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.planning__entete h2 {
+    margin: 0;
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.planning__bouton {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 7px;
+    background-color: #8affae;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* LISTE DES EVENEMENTS */
+
+.planning__evenements {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.planning__jour {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 71px;
+    padding: 7px 9px;
+    background-color: #282f63;
+    color: white;
+    border-radius: 9px;
+}
+
+.planning__jour p {
+    margin: 0 0 9px;
+    font-size: 14px;
+}
+
+.planning__jour span {
+    font-size: 18px;
+}
+
+/* STATUT DES EVENEMENTS */
+
+.planning__statut {
+    width: 23px;
+    height: 23px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+}
+
+.planning__statut--actif {
+    background-color: #16f45b;
+}

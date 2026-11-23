@@ -53,5 +53,52 @@
     <div class="indic-page">
         <h2>Page Gestionnaire</h2>
     </div>
+
+    <div class="planning">
+
+    <div class="planning__entete">
+        <h2>Planning</h2>
+        <button class="planning__bouton" type="button">
+            →
+        </button>
+    </div>
+
+    <div class="planning__evenements">
+
+        <div class="planning__jour">
+            <div>
+                <p>Mercredi 1 octobre 2026</p>
+                <span>3 événements notés</span>
+            </div>
+            <div class="planning__statut planning__statut--actif"></div>
+        </div>
+
+        <div class="planning__jour">
+            <div>
+                <p>Jeudi 2 octobre 2026</p>
+                <span>5 événements notés</span>
+            </div>
+            <div class="planning__statut"></div>
+        </div>
+
+        <div class="planning__jour">
+            <div>
+                <p>Vendredi 3 octobre 2026</p>
+                <span>4 événements notés</span>
+            </div>
+            <div class="planning__statut"></div>
+        </div>
+
+        <div class="planning__jour">
+            <div>
+                <p>Samedi 4 octobre 2026</p>
+                <span>0 événements notés</span>
+            </div>
+            <div class="planning__statut"></div>
+        </div>
+
+    </div>
+
+</div>
 </body>
 </html>
