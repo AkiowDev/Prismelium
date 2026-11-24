@@ -114,7 +114,7 @@ $escape = static fn ($value): string => htmlspecialchars((string) $value, ENT_QU
                     <nav class="actions-menu" aria-label="Accès rapides">
                         <a class="actions-menu__bouton" href="./GestionExperimentationBureau.php">gestion des expérimentations</a>
                         <a class="actions-menu__bouton" href="#">Gérer le planning</a>
-                        <a class="actions-menu__bouton" href="#">Gérer les inscriptions</a>
+                        <a class="actions-menu__bouton" href="./GestionInscriptionsBureau.php">Gérer les inscriptions</a>
                         <a class="actions-menu__bouton" href="#">Gérer les rétributions</a>
                     </nav>
 
