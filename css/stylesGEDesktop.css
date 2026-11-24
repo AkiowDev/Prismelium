@@ -130,6 +130,12 @@ input {
     padding-bottom: 22px;
 }
 
+.actions-experiences form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
 .actions-experiences button,
 .actions-experiences__lien {
     display: inline-grid;
@@ -157,6 +163,14 @@ input {
     cursor: not-allowed;
     opacity: 0.55;
     box-shadow: none;
+}
+
+.actions-experiences .actions-experiences__supprimer {
+    background: #a12020;
+}
+
+.actions-experiences__supprimer:not(:disabled):hover {
+    background: #781515;
 }
 
 .actions-experiences__lien:focus-visible {
@@ -224,6 +238,17 @@ input {
 .recherche input::placeholder {
     color: #999;
     opacity: 1;
+}
+
+.recherche__archive {
+    width: 145px;
+    height: 38px;
+    flex: none;
+    border: 1px solid #c8c8c8;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    font-size: 13px;
 }
 
 .recherche__filtre {
@@ -294,6 +319,28 @@ input {
     color: #2a3f83;
     font-size: 14px;
     font-weight: 700;
+}
+
+.selection-experience {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #333;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.selection-experience input {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    accent-color: #2a3f83;
+}
+
+.selection-experiences {
+    margin: 10px 0 -30px 65px;
+    color: #555;
+    font-size: 13px;
 }
 
 .etat-vide {

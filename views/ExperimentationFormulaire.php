@@ -35,7 +35,7 @@ if ($isEditing) {
 
     $experimentQuery = $pdo->prepare(
         'SELECT Id_Exp, Nom_Exp, Desc_Exp, Date_Debut_Exp, Date_Fin_Exp,
-                Duree_Exp_Min, Nb_Sessions_Prevues, Type_Retribution
+                Duree_Exp_Min, Nb_Sessions_Prevues, Type_Retribution, Statut_Exp
          FROM EXPERIMENTATION
          WHERE Id_Exp = :experiment_id AND Id_Equipe = :team_id'
     );
@@ -48,6 +48,10 @@ if ($isEditing) {
     if (!$editingExperiment) {
         http_response_code(404);
         exit('Expérimentation introuvable pour votre équipe.');
+    }
+    if ($editingExperiment['Statut_Exp'] === 'Archivée') {
+        http_response_code(403);
+        exit('Une expérimentation archivée ne peut pas être modifiée.');
     }
 
     $limitsQuery = $pdo->prepare(
