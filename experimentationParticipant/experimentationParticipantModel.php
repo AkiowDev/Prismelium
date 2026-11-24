@@ -1,6 +1,16 @@
 <?php
 
+function get_bdd(){
+    $hostname = 'localhost';
+    $user = 'root';
+    $password = '';
+    $db_name = 'Prismelium';
 
+    $dsn = "mysql:host=$hostname;dbname=$db_name;charset=utf8mb4";
+    $pdo = new PDO($dsn, $user, $password);
+
+    return $pdo;
+}
 
 function get_exp_by_id($exp){
     $bdd = get_bdd();
@@ -13,7 +23,22 @@ function get_statutinsc_by_user_exp($user, $exp){
     $bdd = get_bdd();
     $query = $bdd->prepare('SELECT Statut_Insc FROM inscription i INNER JOIN session s ON i.Id_Ses=s.Id_Ses WHERE i.Id_User = ? AND s.Id_Exp = ?');
     $query->execute([$user, $exp]);
-    return $query->fetch();
+    return $query->fetchColumn();
+}
+
+function get_ses_by_exp($exp){
+    $bdd = get_bdd();
+    $query = $bdd->prepare('SELECT s.Id_Ses FROM session s LEFT JOIN inscription i ON s.Id_Ses = i.Id_Ses WHERE s.Id_Exp = ? GROUP BY s.Id_Ses, s.Nb_Place_Max HAVING COUNT(i.Id_User) < s.Nb_Place_Max;');
+    $query->execute([$exp]);
+    return $query->fetchColumn();
+}
+
+function insert_insc($user, $exp) {
+    $bdd = get_bdd();
+    $ses = get_ses_by_exp($exp);
+    $query = $bdd->prepare('INSERT INTO inscription (?, ?, \'En attente\', SYSDATETIME(), 0)');
+    $query->execute([$user, $ses]);
+    return $query->fetchColumn();
 }
 
 ?>

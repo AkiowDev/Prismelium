@@ -17,7 +17,7 @@
             <img class="barre-laterale__logo-cerveau" src="../images/brain-logo.png" alt="">
         </a>
         <nav class="barre-laterale__navigation">
-            <a href="#">Expérimentations</a>
+            <a href="http://localhost/Prismelium/Prismelium/experimentationsParticipant/experimentationsParticipantView.php">Expérimentations</a>
             <a href="#">Messagerie</a>
             <a href="#">Planning</a>
             <a href="#">Paramètres</a>
@@ -35,7 +35,10 @@
             <div class="periode">Période : <?= $expe['Date_Debut_Exp']?> - <?= $expe['Date_Fin_Exp']?> </div>
             <div class="equipe">Projet dirigé par : <?= $expe['Nom_Equipe']?></div>
             <div class="statut_insc">Inscrit : <?= $statut_insc?></div>
-            
+
+            <? if ($statut_insc == 'Non') ?>
+                <button type="button" class="btn-inscription">Inscription</button>
+            <? endif ?>
         </section>
     </main>
 
