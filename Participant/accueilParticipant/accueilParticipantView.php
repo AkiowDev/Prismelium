@@ -17,7 +17,7 @@
             </a>
             <nav class="barre-laterale__navigation">
                 <a href="../experimentationParticipant/">Expérimentations</a>
-                <a href="#">Messagerie</a>
+                <a href="../../Messagerie/messagerie.php">Messagerie</a>
                 <a href="#planning">Planning</a>
                 <a href="#">Paramètres</a>
             </nav>
