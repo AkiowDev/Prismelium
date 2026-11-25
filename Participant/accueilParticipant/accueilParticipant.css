@@ -1,17 +1,25 @@
 :root {
     color-scheme: light;
     font-family: Poppins, Inter, Arial, sans-serif;
+
     --sidebar-width: clamp(220px, 21.4vw, 308px);
+    --sidebar-color: #282f63;
+    --title-color: #d4451b;
 }
+
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
+
 body {
-    font-size: 14px;
-    background-color: #fff;
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    background: #fff;
+    color: #111;
 }
+
 .barre-laterale {
     position: fixed;
     inset: 0 auto 0 0;
@@ -24,6 +32,7 @@ body {
     background: #282f63;
     color: #fff;
 }
+
 .barre-laterale__marque {
     display: block;
     width: 50.6%;
@@ -37,7 +46,6 @@ body {
     border-radius: 30%;
 }
 .barre-laterale__navigation {
-    position: relative;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -71,14 +79,48 @@ body {
     width: 76%;
     height: auto;
 }
-.bienvenue {
-    position: static;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size: 40px;
-    color: rgba(212,69,27,1);
-    margin-bottom: 5px;
+
+.haut-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-left: 0;
+    padding: 30px 0px;
 }
+
+.bienvenue h1 {
+    margin: 0;
+    color: #d4451b;
+    font-size: 40px;
+    
+}
+
+.profil {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nom_user h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.photo-profil {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.i-button {
+    width: 50px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .titre-page {
     position: static;
     font-family: 'Poppins', sans-serif;
@@ -86,6 +128,7 @@ body {
     color: rgba(212,69,27,1);
     margin-bottom: 25px;
 }
+
 .main {
     margin-left: var(--sidebar-width);
     position: relative;
@@ -103,9 +146,8 @@ body {
 .planning {
     flex: 1;
     min-width: 350px;
-    max-width: 650px;
-    max-width: 700px;
-    min-height: 500px;
+    max-width: 560px;
+    min-height: 400px;
     overflow: hidden;
     border: 15px solid #d4451b;
     border-radius: 20px;
@@ -172,7 +214,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 680px;
+    max-width: 600px;
     flex-shrink: 0;
     font-family: 'Poppins', sans-serif;
 }
@@ -185,6 +227,7 @@ body {
     border-radius: 36px;
     border: 8px solid;
     overflow: hidden;
+    margin-left: 100px;
 }
 
 .carte__visuel {
