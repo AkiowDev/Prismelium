@@ -4,37 +4,31 @@
     <meta charset="UTF-8">
     <title>Connexion - LIUM</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="connexion.css">
+    <link rel="stylesheet" href="<?= app_url('connexion/connexion.css') ?>">
 </head>
 <body>
-
     <div class="page">
         <div class="img_haut"></div>
         <div class="img_bas"></div>
 
         <div class="gauche">
             <div class="logo"></div>
-
-            <form action="connexionController.php" method="POST">
-            <?php if (!empty($erreur)): ?>
-                <div class="error-msg"><?= htmlspecialchars($erreur) ?></div>
-            <?php endif; ?>
-                
+            <form action="<?= app_url('index.php?page=connexion') ?>" method="POST">
+                <?php if (!empty($erreur)): ?>
+                    <div class="error-msg"><?= htmlspecialchars($erreur, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></div>
+                <?php endif; ?>
                 <div class="champ_mail">
                     <div class="mail">
                         <input type="text" id="mail" name="mail" placeholder="Identifiant..." required>
                     </div>
                 </div>
                 <div class="champs_id">Vous devez entrer votre identifiant.</div>
-
                 <div class="champ_mdp">
                     <div class="mdp">
                         <input type="password" id="password" name="password" placeholder="Mot de passe..." required>
                     </div>
                 </div>
-
                 <a href="#" class="mdp_oublie">Mot de passe oublié ?</a>
-
                 <button type="submit" class="bouton_connexion">
                     <span class="connexion">Se connecter</span>
                 </button>
@@ -45,6 +39,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>

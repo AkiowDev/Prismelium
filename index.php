@@ -1,0 +1,30 @@
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/initialisation.php';
+
+$page = is_string($_GET['page'] ?? null) ? $_GET['page'] : 'connexion';
+
+switch ($page) {
+    case 'connexion':
+        (new \Prismelium\Controllers\ConnexionControleur())->login();
+        break;
+    case 'enseignant-chercheur':
+        (new \Prismelium\Controllers\TableauDeBordControleur())->index();
+        break;
+    case 'experimentations':
+        (new \Prismelium\Controllers\ExperimentationControleur())->index();
+        break;
+    case 'experimentations-creer':
+        (new \Prismelium\Controllers\ExperimentationControleur())->create();
+        break;
+    case 'experimentations-modifier':
+        (new \Prismelium\Controllers\ExperimentationControleur())->edit();
+        break;
+    case 'inscriptions':
+        (new \Prismelium\Controllers\InscriptionControleur())->index();
+        break;
+    default:
+        http_response_code(404);
+        echo 'Page introuvable.';
+}
