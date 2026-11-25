@@ -98,6 +98,7 @@ input {
 
 .section-experience {
     margin-top: 12px;
+    gap: 20px;
 }
 
 .titre-page h2 {
