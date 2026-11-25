@@ -1,0 +1,538 @@
+
+/* ================================= */
+/*    RÉINITIALISATION GÉNÉRALE      */
+/* ================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ================================= */
+/*      BODY : PAGE PRINCIPALE       */
+/* ================================= */
+
+.body_messagerie {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 100vh;
+
+    font-family: 'Poppins';
+    overflow: hidden;
+}
+
+
+/* ================================= */
+/* PREMIÈRE COLONNE : BARRE LATÉRALE */
+/* ================================= */
+
+.barre_laterale {
+    width: 90px;
+    min-width: 90px;
+    height: 100vh;
+    flex-shrink: 0;
+
+    background-color: #29336D;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Logo */
+
+#barre_laterale_logo {
+    width: 100%;
+    height: 75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    width: 44px;
+    height: 53px;
+    object-fit: contain;
+}
+
+/* Menu */
+
+.sidebar-menu {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Boutons du menu */
+
+.menu-item {
+    width: 100%;
+    height: 73px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    text-decoration: none;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 13px;
+}
+
+/* Icônes du menu */
+
+.menu-item .icon img {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+}
+
+/* Bouton actif */
+
+.menu-item.active {
+    background-color: #E8461B;
+}
+
+/* Survol des boutons */
+
+.menu-item:not(.active):hover {
+    background-color: #3C4783;
+}
+
+
+/* ================================= */
+/* DEUXIÈME COLONNE : BARRE CHOIX    */
+/* ================================= */
+
+.barre_choix {
+    width: 256px;
+    height: 100vh;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins';
+    background-color: #FFFFFF;
+    border-right: 1px solid #D8D8D8;
+}
+
+/* Adresse utilisateur */
+
+.adresse_utilisateur {
+    width: 100%;
+    height: 73px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 1px solid #D8D8D8;
+    background-color: #EEEEEE;
+
+    font-family: 'Poppins';
+    font-size: 12px;
+    color: #171717;
+}
+
+.adresse_utilisateur p {
+    margin: 0;
+}
+
+/* Liste des dossiers */
+
+.liste_dossiers {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dossiers */
+
+.dossier {
+    width: 100%;
+    height: 37px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+    padding: 0 9px;
+
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: #171717;
+
+    border-bottom: 1px solid #E4E4E4;
+
+    cursor: pointer;
+}
+
+/* Icônes des dossiers */
+
+.dossier .icon {
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+.dossier .icon img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+}
+
+/* Dossier actif */
+
+.dossier.actif {
+    background-color: #F5F5F5;
+}
+
+/* Survol des dossiers */
+
+.dossier:hover {
+    background-color: #EEEEEE;
+}
+
+
+
+/* ================================= */
+/* TROISIÈME COLONNE : LISTE DES MESSAGES */
+/* ================================= */
+
+.barre_messages {
+    width: 272px;
+    min-width: 272px;
+    height: 100vh;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #FFFFFF;
+    border-right: 1px solid #D8D8D8;
+}
+
+/* Barre d'outils */
+
+.entete_messages {
+    height: 73px;
+    min-height: 73px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #D8D8D8;
+    background-color: #EEEEEE;
+}
+
+.outil_message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    font-family: 'Poppins';
+    font-size: 12px;
+}
+
+.icone_outil {
+    font-size: 25px;
+}
+
+/* Liste des messages */
+
+.liste_messages {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Message individuel */
+
+.message {
+    display: block;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: inherit;
+
+    min-height: 56px;
+    height: auto;
+    padding: 8px 10px;
+
+    border-bottom: 1px solid #D8D8D8;
+
+    cursor: pointer;
+}
+.message:hover {
+    background-color: #F2F2F2;
+}
+
+/* Ligne expéditeur et date */
+
+.ligne_message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.expediteur {
+    font-family: 'Poppins';
+    font-size: 12px;
+    color: #888888;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.date {
+    font-family: 'Poppins';
+    font-size: 10px;
+    color: #888888;
+
+    white-space: nowrap;
+}
+
+/* Contenu affiché sous l'expéditeur */
+
+.objet {
+    margin-top: 8px;
+
+    font-family: 'Poppins';
+    font-size: 15px;
+    color: #171717;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ================================= */
+/* QUATRIÈME COLONNE : CONTENU DU MESSAGE */
+/* ================================= */
+
+.contenu_message {
+    flex: 1;
+    min-width: 350px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+/* Messages non lus */
+.message.non_lu {
+    background-color: #EEF3FF;
+}
+
+.message.non_lu .expediteur,
+.message.non_lu .objet {
+    font-weight: bold;
+    color: #29336D;
+}
+
+.message.lu {
+    background-color: #FFFFFF;
+}
+
+.message.lu .expediteur,
+.message.lu .objet {
+    font-weight: normal;
+    color: #888888;
+}
+
+/* Survol */
+.message:hover {
+    background-color: #E1E8F8;
+}
+
+/* En-tête du contenu */
+
+.entete_contenu {
+    min-height: 73px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 25px;
+
+    border-bottom: 1px solid #dcdcdc;
+    background-color: #EEEEEE;
+}
+
+.entete_contenu h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Informations de l'expéditeur */
+
+.informations_message {
+    position: relative;
+
+    padding: 25px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.informations_message p {
+    margin-bottom: 6px;
+    font-size: 14px;
+    
+}
+
+.informations_message .date_message {
+    margin-top: 12px;
+    color: #777777;
+    font-size: 13px;
+}
+
+/* Corps du message */
+
+.corps_message {
+    padding: 30px 25px;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.corps_message p {
+    margin-bottom: 18px;
+}
+
+.pas_de_message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+}
+
+#messagerie_vide {
+    width: 50%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ============================= */
+/* PAGE CONTACTS                  */
+/* ============================= */
+
+.contacts-container {
+    padding: 25px 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Barre de recherche */
+
+.recherche-contacts {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.recherche-contacts input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #d8dce5;
+    border-radius: 10px;
+    outline: none;
+    font-family: 'Poppins';
+    font-size: 13px;
+    background-color: #f8f9fc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.recherche-contacts input:focus {
+    border-color: #7185d8;
+    box-shadow: 0 0 0 3px rgba(113, 133, 216, 0.12);
+}
+
+.recherche-contacts button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #7185d8;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.recherche-contacts button:hover {
+    background-color: #586fc5;
+}
+
+/* Liste des contacts */
+
+.liste-contacts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* Carte d'un contact */
+
+.contact {
+    padding: 16px 20px;
+    border: 1px solid #e5e8ef;
+    border-radius: 12px;
+    background-color: white;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.contact:hover {
+    background-color: #f8f9fc;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact h3 {
+    margin: 0 0 4px 0;
+    color: #30384a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.contact p {
+    margin: 0;
+    color: #858c9c;
+    font-size: 12px;
+}
+
+/* Aucun résultat */
+
+.liste-contacts > p {
+    color: #858c9c;
+    font-size: 13px;
+    text-align: center;
+    padding: 25px;
+}
