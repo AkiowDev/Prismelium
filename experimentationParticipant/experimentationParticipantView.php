@@ -29,7 +29,7 @@
 
         <section class="section-experience" aria-labelledby="titre-experiences-bureau">
             <div class="titre-page">
-                <h2 id="titre-experiences-bureau"><?= $expe['Nom_Exp']?></h2>
+                <h2><?= $expe['Nom_Exp']?></h2>
             </div>
             <div class="desc">Description : <?= $expe['Desc_Exp']?></div>
             <div class="periode">Période : <?= $expe['Date_Debut_Exp']?> - <?= $expe['Date_Fin_Exp']?> </div>

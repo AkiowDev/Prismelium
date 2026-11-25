@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../connexion/connexionModel.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../connexion/connexionController.php');

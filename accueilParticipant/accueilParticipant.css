@@ -77,8 +77,7 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    margin-left: var(--sidebar-width);
-    padding: 30px 60px;
+    margin-bottom: 30px;
 }
 
 .bienvenue h1 {

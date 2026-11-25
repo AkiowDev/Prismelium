@@ -98,7 +98,6 @@ input {
 
 .section-experience {
     margin-top: 12px;
-    gap: 20px;
 }
 
 .titre-page h2 {
@@ -174,6 +173,8 @@ input {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+    margin-top: 30px;
+    margin-left: 25px;
 }
 
 .btn-inscription:hover {
