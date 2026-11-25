@@ -36,9 +36,14 @@ function get_ses_by_exp($exp){
 function insert_insc($user, $exp) {
     $bdd = get_bdd();
     $ses = get_ses_by_exp($exp);
-    $query = $bdd->prepare('INSERT INTO inscription (?, ?, \'En attente\', SYSDATETIME(), 0)');
-    $query->execute([$user, $ses]);
-    return $query->fetchColumn();
+    if ($ses === false || $ses === null) {
+        return false;
+    }
+    $query = $bdd->prepare(
+        'INSERT INTO inscription (Id_User, Id_Ses, Statut_Insc, Date_Demande, Retrib_Valid)
+         VALUES (?, ?, ?, CURDATE(), 0)'
+    );
+    return $query->execute([$user, $ses, 'En attente']);
 }
 
 ?>

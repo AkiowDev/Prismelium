@@ -36,9 +36,14 @@
             <div class="equipe">Projet dirigé par : <?= $expe['Nom_Equipe']?></div>
             <div class="statut_insc">Inscrit : <?= $statut_insc?></div>
 
-            <? if ($statut_insc == "Non"): ?>
-                <button type="button" class="btn-inscription">Inscription</button>
-            <? endif; ?>
+            <?php if (trim((string) $statut_insc) === 'Non'): ?>
+                <form method="POST" action="experimentationParticipantController.php">
+                    <input type="hidden" name="id_exp" value="<?= htmlspecialchars((string) $exp_id, ENT_QUOTES, 'UTF-8') ?>">
+                    <button type="submit" name="action" value="inscription" class="btn-inscription">
+                        Inscription
+                    </button>
+                </form>
+            <?php endif; ?>
         </section>
     </main>
 </body>
