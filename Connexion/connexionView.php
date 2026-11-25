@@ -5,6 +5,7 @@
     <title>Connexion - Prismelium</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="connexion.css">
+    <link rel="icon" href="/Prismelium/images/brain-logo.ico" type="icon">
 </head>
 <body>
 

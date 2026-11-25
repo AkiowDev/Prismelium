@@ -10,12 +10,12 @@
 
     <div class="layout-container">
         <aside class="barre-laterale" aria-label="Navigation principale">
-            <a class="barre-laterale__marque" href="#" aria-label="Accueil">
+            <a class="barre-laterale__marque" href="http://localhost/Prismelium/Participant/accueilParticipant/accueilParticipantController.php" aria-label="Accueil">
                 <img class="barre-laterale__logo-cerveau" src="../../images/brain-logo.png" alt="">
             </a>
             <nav class="barre-laterale__navigation">
-                <a href="http://localhost/Prismelium/Prismelium/experimentationsParticipant/experimentationsParticipantView.php">Expérimentations</a>
-                <a href="#">Messagerie</a>
+                <a href="http://localhost/Prismelium/Participant/experimentationsParticipant/experimentationsParticipantController.php">Expérimentations</a>
+                <a href="http://localhost/Prismelium/Messagerie/messagerie.php">Messagerie</a>
                 <a href="#">Planning</a>
                 <a href="#">Paramètres</a>
             </nav>
@@ -34,10 +34,11 @@
                     <div class="nom_user">
                         <h2><?php echo htmlspecialchars($user['Prenom_User'] ?? ''), " ", htmlspecialchars($user['Nom_User'] ?? ''); ?></h2>
                     </div>
-                    <img class="i-button"
-                        src="../../images/button_i.png"
-                        alt="Bouton i orange">
-
+                    <a href="../../Messagerie/Deconnexion.php">
+                        <img class="i-button"
+                            src="../../images/button_i.png"
+                            alt="Bouton i orange">
+                    </a>
                 </div>
             </div>
 

@@ -16,6 +16,7 @@ $current_user_mail = $_SESSION['user_mail'];
 // 4. Chargement des modèles
 require_once __DIR__ . '/../../Connexion/connexionModel.php';
 require_once __DIR__ . '/../../Messagerie/models/Models.php';
+require_once __DIR__ . '/../experimentationsParticipant/experimentationsParticipantModel.php';
 
 // 5. Récupération de l'utilisateur connecté
 $user = get_user_by_mail($current_user_mail);
