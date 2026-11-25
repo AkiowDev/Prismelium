@@ -25,9 +25,26 @@
         </aside>
 
         <main class="main">
-            <div class="bienvenue">Bienvenue <?php echo htmlspecialchars($user['Prenom_User'] ?? ''); ?></div>
-            <div class="titre-page">Page d'accueil</div>
+            <div class="haut-page">
+                <div class="bienvenue">
+                    <h1>Bienvenue <?php echo htmlspecialchars($user['Prenom_User'] ?? ''); ?></h1>
+                </div>
+                <div class="profil">
+                    <img class="photo-profil"
+                        src="../images/profil.png"
+                        alt="Photo de profil utilisateur">
+                    <div class="nom_user">
+                        <h2><?php echo htmlspecialchars($user['Prenom_User'] ?? ''), " ", htmlspecialchars($user['Nom_User'] ?? ''); ?></h2>
+                    </div>
+                    <img class="i-button"
+                        src="../images/button_i.png"
+                        alt="Bouton i orange">
 
+                </div>
+            </div>
+
+            <div class="titre-page">Page d'accueil</div>
+            
             <div class="contenu-accueil">
                 <section class="planning" id="planning" aria-labelledby="titre-planning-bureau">
                     <h2 class="planning__titre" id="titre-planning-bureau">Planning</h2>

@@ -27,8 +27,8 @@
 
     <main class="contenu-principal">
 
-        <section class="section-experiences" aria-labelledby="titre-experiences-bureau">
-            <div class="barre-outils-experiences">
+        <section class="section-experience" aria-labelledby="titre-experiences-bureau">
+            <div class="titre-page">
                 <h2 id="titre-experiences-bureau"><?= $expe['Nom_Exp']?></h2>
             </div>
             <div class="desc">Description : <?= $expe['Desc_Exp']?></div>
@@ -36,12 +36,10 @@
             <div class="equipe">Projet dirigé par : <?= $expe['Nom_Equipe']?></div>
             <div class="statut_insc">Inscrit : <?= $statut_insc?></div>
 
-            <? if ($statut_insc == 'Non') ?>
+            <? if ($statut_insc == "Non"): ?>
                 <button type="button" class="btn-inscription">Inscription</button>
-            <? endif ?>
+            <? endif; ?>
         </section>
     </main>
-
-
 </body>
 </html>

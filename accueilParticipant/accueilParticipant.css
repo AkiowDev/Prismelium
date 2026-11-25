@@ -71,14 +71,47 @@ body {
     width: 76%;
     height: auto;
 }
-.bienvenue {
-    position: static;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size: 40px;
-    color: rgba(212,69,27,1);
-    margin-bottom: 5px;
+
+.haut-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-left: var(--sidebar-width);
+    padding: 30px 60px;
 }
+
+.bienvenue h1 {
+    margin: 0;
+    color: #d4451b;
+    font-size: 40px;
+}
+
+.profil {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nom_user h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.photo-profil {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.i-button {
+    width: 50px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .titre-page {
     position: static;
     font-family: 'Poppins', sans-serif;
@@ -86,6 +119,7 @@ body {
     color: rgba(212,69,27,1);
     margin-bottom: 25px;
 }
+
 .main {
     margin-left: var(--sidebar-width);
     position: relative;
