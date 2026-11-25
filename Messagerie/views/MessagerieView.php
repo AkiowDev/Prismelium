@@ -36,28 +36,28 @@
 
             <a href="rediger.php" class="menu-item active">
                 <span class="icon">
-                    <img src="img/rediger.png" alt="Rédiger">
+                    <img src="../../Prismelium/images/rediger.png" alt="Rédiger">
                 </span>
                 <span>Rédiger</span>
             </a>
 
             <a href="contacts.php" class="menu-item">
                 <span class="icon">
-                    <img src="img/contacts.png" alt="Contacts">
+                    <img src="../../Prismelium/images/contacts.png" alt="Contacts">
                 </span>
                 <span>Contacts</span>
             </a>
 
             <a href="#" class="menu-item">
                 <span class="icon">
-                    <img src="img/parametres.png" alt="Paramètres">
+                    <img src="../../Prismelium/images/parametres.png" alt="Paramètres">
                 </span>
                 <span>Paramètres</span>
             </a>
 
             <a href="Deconnexion.php" class="menu-item">
                 <span class="icon">
-                    <img src="img/Deconnexion.png" alt="Deconnexion">
+                    <img src="../../Prismelium/images/Deconnexion.png" alt="Deconnexion">
                 </span>
                 <span>Deconnexion</span>
             </a>
@@ -80,7 +80,7 @@
             <a href="messagerie.php?type=recus"
                 class="dossier <?= $type_messages === 'recus' ? 'actif' : '' ?>">
                 <span class="icon">
-                    <img src="img/reception.png" alt="Boîte de réception">
+                    <img src="../../Prismelium/images/reception.png" alt="Boîte de réception">
                 </span>
                 <span>Boîte de réception</span>
             </a>
@@ -88,7 +88,7 @@
             <a href="messagerie.php?type=brouillon"
                 class="dossier <?= $type_messages === 'brouillon' ? 'actif' : '' ?>">
                 <span class="icon">
-                    <img src="img/brouillon.png" alt="Brouillon">
+                    <img src="../../Prismelium/images/brouillon.png" alt="Brouillon">
                 </span>
                 <span>Brouillons</span>
             </a>
@@ -96,7 +96,7 @@
             <a href="messagerie.php?type=envoyes"
             class="dossier <?= $type_messages === 'envoyes' ? 'actif' : '' ?>">
                 <span class="icon">
-                    <img src="img/envoyes.png" alt="Envoyés">
+                    <img src="../../Prismelium/images/envoyes.png" alt="Envoyés">
                 </span>
                 <span>Envoyés</span>
             </a>
@@ -104,14 +104,14 @@
 
             <div class="dossier">
                 <span class="icon">
-                    <img src="img/pourriel.png" alt="Pourriels">
+                    <img src="../../Prismelium/images/pourriel.png" alt="Pourriels">
                 </span>
                 <span>Pourriels</span>
             </div>
 
             <div class="dossier">
                 <span class="icon">
-                    <img src="img/corbeille.png" alt="Corbeille">
+                    <img src="../../Prismelium/images/corbeille.png" alt="Corbeille">
                 </span>
                 <span>Corbeille</span>
             </div>
@@ -256,7 +256,7 @@
 
             <div class="pas_de_message">
                 <img
-                    src="img/lmu_messVide.png"
+                    src="../../Prismelium/images/lmu_messVide.png"
                     id="messagerie_vide"
                     alt="Logo Le Mans Université"
                 >
