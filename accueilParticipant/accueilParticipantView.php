@@ -18,7 +18,7 @@
             <nav class="barre-laterale__navigation">
                 <a href="http://localhost/Prismelium/Prismelium/experimentationsParticipant/experimentationsParticipantView.php">Expérimentations</a>
                 <a href="#">Messagerie</a>
-                <a href="#">Planning</a>
+                <a href="http://localhost/Prismelium/Prismelium/planningParticipant/planningParticipantView.php">Planning</a>
                 <a href="#">Paramètres</a>
             </nav>
             <img class="barre-laterale__logo-universite" src="../images/university-logo.png" alt="Le Mans Université">
@@ -70,7 +70,7 @@
                 </section>
                             
                 <div class="cartes-container">
-                    <a href="#" class="carte carte--planning">
+                    <a href="http://localhost/Prismelium/Prismelium/planningParticipant/planningParticipantView.php" class="carte carte--planning">
                         <div class="carte__visuel">
                             <img src="../images/planning.png" alt="Illustration Planning">
                         </div>
@@ -79,7 +79,7 @@
                         </div>
                     </a>
 
-                    <a href="#" class="carte carte--experimentation">
+                    <a href="http://localhost/Prismelium/Prismelium/experimentationsParticipant/experimentationsParticipantView.php" class="carte carte--experimentation">
                         <div class="carte__visuel">
                             <img src="../images/experimentations.png" alt="Illustration Prochaine expérimentation">
                         </div>
