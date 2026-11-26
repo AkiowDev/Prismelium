@@ -48,7 +48,7 @@
                 <div class="grille-experiences">
                     <?php foreach ($visibleExperiments as $index => $experiment): ?>
                         <article class="carte-experience" aria-label="<?= htmlspecialchars($experiment['title'], ENT_QUOTES, 'UTF-8') ?> <?= $index + 1 ?>">
-                            <a href="http://localhost/Prismelium/Prismelium/experimentationParticipant/experimentationParticipantView.php?id=<?= urlencode((string) ($experiment['id'] ?? $index)) ?>" class="carte-experience__lien">
+                            <a href="http://localhost/Prismelium/Participant/experimentationParticipant/experimentationParticipantView.php?id=<?= urlencode((string) ($experiment['id'] ?? $index)) ?>" class="carte-experience__lien">
                                 <div
                                     class="carte-experience__couleur"
                                     style="--couleur-carte: <?= htmlspecialchars($experiment['color'], ENT_QUOTES, 'UTF-8') ?>"
