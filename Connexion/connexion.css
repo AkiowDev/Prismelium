@@ -20,7 +20,7 @@
         .img_haut {
             width: calc(100% - 29px);
             height: 492px;
-            background: url("images/img-connexion.png");
+            background: url("/Prismelium/images/img-connexion.png");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
@@ -34,7 +34,7 @@
         .img_bas {
             width: calc(100% - 729px);
             height: 532px;
-            background: url("images/img-connexion.png");
+            background: url("/Prismelium/images/img-connexion.png");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
@@ -58,7 +58,7 @@
         .logo {
             width: 251px;
             height: 161px;
-            background: url("images/logo-lium.png");
+            background: url("/Prismelium/images/logo-lium.png");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;

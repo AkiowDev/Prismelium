@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,9 +25,9 @@
 
     <main class="contenu-principal">
 
-        <section class="section-experience" aria-labelledby="titre-experiences-bureau">
+        <section class="section-experience" aria-labelledby="titre-experience">
             <div class="titre-page">
-                <h2><?= htmlspecialchars($expe['Nom_Exp'] ?? '', ENT_QUOTES, 'UTF-8') ?></h2>
+                <h2 id="titre-experience"><?= htmlspecialchars($expe['Nom_Exp'] ?? '', ENT_QUOTES, 'UTF-8') ?></h2>
             </div>
             <div class="desc">Description : <?= htmlspecialchars($expe['Desc_Exp'] ?? '', ENT_QUOTES, 'UTF-8') ?></div>
             <div class="periode">Période : <?= htmlspecialchars($expe['Date_Debut_Exp'] ?? '', ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($expe['Date_Fin_Exp'] ?? '', ENT_QUOTES, 'UTF-8') ?></div>

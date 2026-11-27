@@ -1,7 +1,7 @@
 <?php
 function get_exp_by_id($exp){
     $bdd = get_bdd();
-    $query = $bdd->prepare('SELECT * FROM experimentation ex INNER JOIN equipe eq ON ex.Id_Equipe=eq.Id_Equipe WHERE Id_Exp = ?');
+    $query = $bdd->prepare('SELECT * FROM experimentation ex INNER JOIN equipe eq ON ex.Id_Equipe=eq.Id_Equipe WHERE ex.Id_Exp = ?');
     $query->execute([$exp]);
     return $query->fetch();
 }
