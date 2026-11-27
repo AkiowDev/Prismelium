@@ -34,7 +34,7 @@
         .img_bas {
             width: calc(100% - 729px);
             height: 532px;
-            background: url("/Prismelium/images/img-connexion.png");
+            background-image: url("/Prismelium/images/img-connexion.png");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
@@ -58,7 +58,7 @@
         .logo {
             width: 251px;
             height: 161px;
-            background: url("/Prismelium/images/logo-lium.png");
+            background-image: url("/Prismelium/images/logo-lium.png");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;

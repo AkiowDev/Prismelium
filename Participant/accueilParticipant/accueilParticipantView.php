@@ -16,7 +16,7 @@
             <nav class="barre-laterale__navigation">
                 <a href="http://localhost/Prismelium/Participant/experimentationsParticipant/experimentationsParticipantController.php">Expérimentations</a>
                 <a href="http://localhost/Prismelium/Messagerie/messagerie.php">Messagerie</a>
-                <a href="#">Planning</a>
+                <a href="http://localhost/Prismelium/Participant/planningParticipant/planningParticipantController.php">Planning</a>
                 <a href="#">Paramètres</a>
             </nav>
             <img class="barre-laterale__logo-universite" src="../../images/university-logo.png" alt="Le Mans Université">
