@@ -29,21 +29,36 @@
 
         <section class="section-experiences" aria-labelledby="titre-experiences-bureau">
             <div class="barre-outils-experiences">
-                <h2 id="titre-experiences-bureau">Liste des expérimentations</h2>
-                <form class="recherche" method="get" role="search">
-                    <label class="texte-masque" for="recherche-experience-bureau">Rechercher une expérimentation</label>
-                    <img class="recherche__icone" src="../images/search.png" alt="">
-                    <input
-                        id="recherche-experience-bureau"
-                        name="q"
-                        type="search"
-                        placeholder="Rechercher"
-                        value="<?= htmlspecialchars($searchTerm, ENT_QUOTES, 'UTF-8') ?>"
-                    >
-                    <button class="recherche__filtre" type="button" aria-label="Filtrer les expérimentations">
-                        <img src="../images/filter.svg" alt="">
-                    </button>
-                </form>
+                <div class="titre-page">
+                    <h2 id="titre-experiences-bureau">Liste des expérimentations</h2>
+                </div>
+                <div class="haut-droite">
+                    <div class="profil">
+                        <img class="photo-profil"
+                            src="../images/profil.png"
+                            alt="Photo de profil utilisateur">
+                        <div class="nom_user">
+                            <h2><?php echo htmlspecialchars($user['Prenom_User'] ?? ''), " ", htmlspecialchars($user['Nom_User'] ?? ''); ?></h2>
+                        </div>
+                        <img class="i-button"
+                            src="../images/button_i.png"
+                            alt="Bouton i orange">
+                    </div>
+                    <form class="recherche" method="get" role="search">
+                        <label class="texte-masque" for="recherche-experience-bureau">Rechercher une expérimentation</label>
+                        <img class="recherche__icone" src="../images/search.png" alt="">
+                        <input
+                            id="recherche-experience-bureau"
+                            name="q"
+                            type="search"
+                            placeholder="Rechercher"
+                            value="<?= htmlspecialchars($searchTerm, ENT_QUOTES, 'UTF-8') ?>"
+                        >
+                        <button class="recherche__filtre" type="button" aria-label="Filtrer les expérimentations">
+                            <img src="../images/filter.svg" alt="">
+                        </button>
+                    </form>
+                </div>
             </div>
 
             <?php if ($visibleExperiments !== []): ?>

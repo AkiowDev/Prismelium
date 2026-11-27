@@ -28,8 +28,21 @@
     <main class="contenu-principal">
 
         <section class="section-experience" aria-labelledby="titre-experiences-bureau">
-            <div class="titre-page">
-                <h2><?= $expe['Nom_Exp']?></h2>
+            <div class="haut-de-page">
+                <div class="titre-page">
+                    <h2><?= $expe['Nom_Exp']?></h2>
+                </div>
+                <div class="profil">
+                    <img class="photo-profil"
+                        src="../images/profil.png"
+                        alt="Photo de profil utilisateur">
+                    <div class="nom_user">
+                        <h2><?php echo htmlspecialchars($user['Prenom_User'] ?? ''), " ", htmlspecialchars($user['Nom_User'] ?? ''); ?></h2>
+                    </div>
+                    <img class="i-button"
+                        src="../images/button_i.png"
+                        alt="Bouton i orange">
+                </div>
             </div>
             <div class="desc">Description : <?= $expe['Desc_Exp']?></div>
             <div class="periode">Période : <?= $expe['Date_Debut_Exp']?> - <?= $expe['Date_Fin_Exp']?> </div>

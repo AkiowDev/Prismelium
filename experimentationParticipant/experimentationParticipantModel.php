@@ -1,17 +1,5 @@
 <?php
 
-function get_bdd(){
-    $hostname = 'localhost';
-    $user = 'root';
-    $password = '';
-    $db_name = 'Prismelium';
-
-    $dsn = "mysql:host=$hostname;dbname=$db_name;charset=utf8mb4";
-    $pdo = new PDO($dsn, $user, $password);
-
-    return $pdo;
-}
-
 function get_exp_by_id($exp){
     $bdd = get_bdd();
     $query = $bdd->prepare('SELECT * FROM experimentation ex INNER JOIN equipe eq ON ex.Id_Equipe=eq.Id_Equipe WHERE Id_Exp = ?');

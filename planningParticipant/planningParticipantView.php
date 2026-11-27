@@ -27,23 +27,19 @@
 
     <div class="contenu-principal">
         <div class="title">
-            <h1>Gestion du Planning</h1>
+            <h1>Planning</h1>
         </div>
         <div class="profil">
             <img class="photo-profil"
                 src="../images/profil.png"
                 alt="Photo de profil utilisateur">
             <div class="nom_user">
-                <h2>John Doe</h2>
+                <h2><?php echo htmlspecialchars($user['Prenom_User'] ?? ''), " ", htmlspecialchars($user['Nom_User'] ?? ''); ?></h2>
             </div>
             <img class="i-button"
                 src="../images/button_i.png"
                 alt="Bouton i orange">
         </div>
-    </div>
-
-    <div class="indic-page">
-        <h2>Page planning</h2>
     </div>
 
     <div class="commandes-planning">
