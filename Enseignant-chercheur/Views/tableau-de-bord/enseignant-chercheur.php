@@ -15,7 +15,7 @@
                     <img class="barre-laterale__logo-cerveau" src="<?= app_url('images/brain-logo.png') ?>" alt="">
                 </a>
                 <nav class="barre-laterale__navigation">
-                    <a href="#">Rétributions</a>
+                    <a href="<?= app_url('index.php?page=retributions') ?>">Rétributions</a>
                     <a href="<?= app_url('index.php?page=experimentations') ?>">Expérimentations</a>
                     <a href="#">Gestion Planning</a>
                     <a href="#">Messagerie</a>
@@ -51,7 +51,7 @@
                         <a class="actions-menu__bouton" href="<?= app_url('index.php?page=experimentations') ?>">gestion des expérimentations</a>
                         <a class="actions-menu__bouton" href="#">Gérer le planning</a>
                         <a class="actions-menu__bouton" href="<?= app_url('index.php?page=inscriptions') ?>">Gérer les inscriptions</a>
-                        <a class="actions-menu__bouton" href="#">Gérer les rétributions</a>
+                        <a class="actions-menu__bouton" href="<?= app_url('index.php?page=retributions') ?>">Gérer les rétributions</a>
                     </nav>
                     <section class="activites" aria-labelledby="titre-activites-bureau">
                         <div class="activites__entete">

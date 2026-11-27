@@ -29,6 +29,51 @@ final class ExperimentationModele
         return $experiment ?: null;
     }
 
+    public function participantsForDashboard(int $experimentId, int $teamId): array
+    {
+        $query = $this->pdo->prepare(
+            'SELECT u.Id_User, u.Nom_User, u.Prenom_User, i.Statut_Insc, i.Date_Demande
+             FROM INSCRIPTION i
+             INNER JOIN UTILISATEUR u ON u.Id_User = i.Id_User
+             INNER JOIN `SESSION` s ON s.Id_Ses = i.Id_Ses
+             INNER JOIN EXPERIMENTATION e ON e.Id_Exp = s.Id_Exp
+             WHERE e.Id_Exp = :experiment_id AND e.Id_Equipe = :team_id
+             ORDER BY i.Date_Demande, u.Nom_User, u.Prenom_User'
+        );
+        $query->execute(['experiment_id' => $experimentId, 'team_id' => $teamId]);
+
+        return $query->fetchAll();
+    }
+
+    public function resourcesForDashboard(int $experimentId, int $teamId): array
+    {
+        $query = $this->pdo->prepare(
+            'SELECT DISTINCT r.Id_Res, r.Nom_Res, r.Type_Res
+             FROM RESSOURCE r
+             INNER JOIN RESERVATION res ON res.Id_Res = r.Id_Res
+             INNER JOIN `SESSION` s ON s.Id_Ses = res.Id_Ses
+             INNER JOIN EXPERIMENTATION e ON e.Id_Exp = s.Id_Exp
+             WHERE e.Id_Exp = :experiment_id AND e.Id_Equipe = :team_id
+             ORDER BY r.Nom_Res, r.Id_Res'
+        );
+        $query->execute(['experiment_id' => $experimentId, 'team_id' => $teamId]);
+
+        return $query->fetchAll();
+    }
+
+    public function sessionCapacityForTeam(int $experimentId, int $teamId): int
+    {
+        $query = $this->pdo->prepare(
+            'SELECT COALESCE(SUM(s.Nb_Place_Max), 0)
+             FROM `SESSION` s
+             INNER JOIN EXPERIMENTATION e ON e.Id_Exp = s.Id_Exp
+             WHERE e.Id_Exp = :experiment_id AND e.Id_Equipe = :team_id'
+        );
+        $query->execute(['experiment_id' => $experimentId, 'team_id' => $teamId]);
+
+        return (int) $query->fetchColumn();
+    }
+
     public function listForTeam(int $teamId, string $search, string $archiveView): array
     {
         $sql =

@@ -90,7 +90,11 @@
                                             <input type="checkbox" name="selected_experiments[]" value="<?= (int) $experiment['Id_Exp'] ?>" form="selection-actions" <?= in_array((int) $experiment['Id_Exp'], $selectedIds, true) ? 'checked' : '' ?> aria-label="Sélectionner <?= htmlspecialchars($experiment['Nom_Exp'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
                                             <span>Sélectionner</span>
                                         </label>
-                                        <span><?= htmlspecialchars($experiment['Nom_Exp'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></span>
+                                        <a
+                                            class="carte-experience__tableau"
+                                            href="<?= app_url('index.php?page=experimentations-tableau&id=' . (int) $experiment['Id_Exp']) ?>"
+                                            aria-label="Ouvrir le tableau de bord de <?= htmlspecialchars($experiment['Nom_Exp'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
+                                        ><?= htmlspecialchars($experiment['Nom_Exp'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></a>
                                         <small>
                                             <?= htmlspecialchars($experiment['Statut_Exp'], ENT_QUOTES, 'UTF-8') ?> ·
                                             <?= (int) $experiment['SessionCount'] ?>/<?= $experiment['Nb_Sessions_Prevues'] === null ? '—' : (int) $experiment['Nb_Sessions_Prevues'] ?> séance(s)

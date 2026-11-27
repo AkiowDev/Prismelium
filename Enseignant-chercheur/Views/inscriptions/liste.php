@@ -15,7 +15,7 @@
                     <img class="barre-laterale__logo-cerveau" src="<?= app_url('images/brain-logo.png') ?>" alt="">
                 </a>
                 <nav class="barre-laterale__navigation">
-                    <a href="#">Rétributions</a>
+                    <a href="<?= app_url('index.php?page=retributions') ?>">Rétributions</a>
                     <a href="<?= app_url('index.php?page=experimentations') ?>">Expérimentations</a>
                     <a href="#">Gestion Planning</a>
                     <a href="#">Messagerie</a>

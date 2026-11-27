@@ -91,6 +91,54 @@ final class ExperimentationControleur extends Controleur
         ]);
     }
 
+    public function dashboard(): void
+    {
+        $researcher = GardeEnseignantChercheur::requireResearcher();
+        $rawId = $_GET['id'] ?? null;
+        $experimentId = is_string($rawId) ? filter_var($rawId, FILTER_VALIDATE_INT) : false;
+        if ($experimentId === false || $experimentId < 1) {
+            http_response_code(404);
+            exit('Expérimentation introuvable.');
+        }
+
+        $model = new ExperimentationModele();
+        $teamId = (int) $researcher['Id_Equipe'];
+        $experiment = $model->findForTeam((int) $experimentId, $teamId);
+        if ($experiment === null) {
+            http_response_code(404);
+            exit('Expérimentation introuvable pour votre équipe.');
+        }
+
+        $participants = $model->participantsForDashboard((int) $experimentId, $teamId);
+        $resources = $model->resourcesForDashboard((int) $experimentId, $teamId);
+        $participantIds = array_unique(array_column($participants, 'Id_User'));
+        $capacity = $model->sessionCapacityForTeam((int) $experimentId, $teamId);
+        $participationRate = $capacity > 0
+            ? (int) round(count($participants) / $capacity * 100)
+            : null;
+        $durationMinutes = filter_var($experiment['Duree_Exp_Min'] ?? null, FILTER_VALIDATE_INT);
+        if ($durationMinutes === false || $durationMinutes === null || $durationMinutes < 1) {
+            $duration = '—';
+        } else {
+            $hours = intdiv($durationMinutes, 60);
+            $minutes = $durationMinutes % 60;
+            $duration = $hours > 0
+                ? $hours . ' h' . ($minutes > 0 ? ' ' . $minutes . ' min' : '')
+                : $minutes . ' min';
+        }
+
+        $this->render('experimentations/tableau-de-bord', [
+            'experiment' => $experiment,
+            'participants' => $participants,
+            'resources' => $resources,
+            'participantCount' => count($participantIds),
+            'enrollmentCount' => count($participants),
+            'participationRate' => $participationRate,
+            'duration' => $duration,
+            'researcherName' => trim((string) $researcher['Prenom_User'] . ' ' . (string) $researcher['Nom_User']),
+        ]);
+    }
+
     public function create(): void
     {
         $this->form(null);

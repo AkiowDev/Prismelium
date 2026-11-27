@@ -15,6 +15,9 @@ switch ($page) {
     case 'experimentations':
         (new \Prismelium\Controllers\ExperimentationControleur())->index();
         break;
+    case 'experimentations-tableau':
+        (new \Prismelium\Controllers\ExperimentationControleur())->dashboard();
+        break;
     case 'experimentations-creer':
         (new \Prismelium\Controllers\ExperimentationControleur())->create();
         break;
@@ -23,6 +26,9 @@ switch ($page) {
         break;
     case 'inscriptions':
         (new \Prismelium\Controllers\InscriptionControleur())->index();
+        break;
+    case 'retributions':
+        (new \Prismelium\Controllers\GestionRetributionsControleur())->index();
         break;
     default:
         http_response_code(404);
