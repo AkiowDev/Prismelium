@@ -15,7 +15,7 @@ $customRestrictionValues = is_array($formData['restriction_personnalisee'] ?? nu
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $isEditing ? 'Modifier' : 'Créer' ?> une expérimentation — Bureau</title>
     <link rel="stylesheet" href="<?= app_url('Enseignant-chercheur/css/stylesGEDesktop.css?v=3') ?>">
-    <link rel="stylesheet" href="<?= app_url('Enseignant-chercheur/css/stylesCreerExperimentationDesktop.css?v=6') ?>">
+    <link rel="stylesheet" href="<?= app_url('Enseignant-chercheur/css/stylesCreerExperimentationDesktop.css?v=7') ?>">
 </head>
 <body>
     <div class="application">
@@ -25,8 +25,9 @@ $customRestrictionValues = is_array($formData['restriction_personnalisee'] ?? nu
                     <img class="barre-laterale__logo-cerveau" src="<?= app_url('images/brain-logo.png') ?>" alt="">
                 </a>
                 <nav class="barre-laterale__navigation">
-                    <a href="#">Rétributions</a>
+                    <a href="<?= app_url('index.php?page=retributions') ?>">Rétributions</a>
                     <a class="actuel" href="<?= app_url('index.php?page=experimentations') ?>" aria-current="page">Expérimentations</a>
+                    <a href="<?= app_url('index.php?page=inscriptions') ?>">Inscriptions</a>
                     <a href="#">Gestion Planning</a>
                     <a href="#">Messagerie</a>
                     <a href="#">Paramètres</a>

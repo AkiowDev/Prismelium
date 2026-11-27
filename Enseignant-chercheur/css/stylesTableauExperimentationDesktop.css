@@ -7,7 +7,7 @@ body {
 }
 
 .tableau-experience__entete {
-    width: 1185px;
+    width: 100%;
 }
 
 .tableau-experience__titre {
@@ -26,7 +26,7 @@ body {
 
 .tableau-experience__separateur {
     display: block;
-    width: 1185px;
+    width: 100%;
     height: 1px;
 }
 

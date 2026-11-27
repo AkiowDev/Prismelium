@@ -9,6 +9,7 @@ body {
 }
 
 .page-creation__entete {
+    width: calc(100% + 35px);
     min-height: 108px;
     border-bottom: 1px solid #777;
 }
@@ -203,6 +204,8 @@ body {
 }
 
 .separateur-creation {
+    display: block;
+    width: calc(100% + 35px);
     height: 1px;
     margin: 0;
     border: 0;
@@ -593,6 +596,7 @@ body {
 
 .actions-formulaire {
     display: flex;
+    width: calc(100% + 35px);
     gap: 12px;
     border-top: 1px solid #777;
     margin-top: 37px;

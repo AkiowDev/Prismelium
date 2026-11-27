@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gestion des inscriptions — Bureau</title>
     <link rel="stylesheet" href="<?= app_url('Enseignant-chercheur/css/stylesGEDesktop.css?v=4') ?>">
-    <link rel="stylesheet" href="<?= app_url('Enseignant-chercheur/css/stylesGestionInscriptionsDesktop.css?v=1') ?>">
+    <link rel="stylesheet" href="<?= app_url('Enseignant-chercheur/css/stylesGestionInscriptionsDesktop.css?v=2') ?>">
 </head>
 <body>
     <div class="application">
@@ -17,6 +17,7 @@
                 <nav class="barre-laterale__navigation">
                     <a href="<?= app_url('index.php?page=retributions') ?>">Rétributions</a>
                     <a href="<?= app_url('index.php?page=experimentations') ?>">Expérimentations</a>
+                    <a href="<?= app_url('index.php?page=inscriptions') ?>" aria-current="page">Inscriptions</a>
                     <a href="#">Gestion Planning</a>
                     <a href="#">Messagerie</a>
                     <a href="#">Paramètres</a>

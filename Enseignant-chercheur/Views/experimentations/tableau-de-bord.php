@@ -16,7 +16,7 @@ $additionalResources = array_slice($resources, 8);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tableau de bord — <?= $escape($experiment['Nom_Exp']) ?></title>
     <link rel="stylesheet" href="<?= app_url('Enseignant-chercheur/css/stylesGEDesktop.css?v=4') ?>">
-    <link rel="stylesheet" href="<?= app_url('Enseignant-chercheur/css/stylesTableauExperimentationDesktop.css?v=1') ?>">
+    <link rel="stylesheet" href="<?= app_url('Enseignant-chercheur/css/stylesTableauExperimentationDesktop.css?v=3') ?>">
 </head>
 <body>
     <div class="application">
@@ -28,6 +28,7 @@ $additionalResources = array_slice($resources, 8);
                 <nav class="barre-laterale__navigation">
                     <a href="<?= app_url('index.php?page=retributions') ?>">Rétributions</a>
                     <a class="actuel" href="<?= app_url('index.php?page=experimentations') ?>" aria-current="page">Expérimentations</a>
+                    <a href="<?= app_url('index.php?page=inscriptions') ?>">Inscriptions</a>
                     <a href="#">Gestion Planning</a>
                     <a href="#">Messagerie</a>
                     <a href="#">Paramètres</a>
