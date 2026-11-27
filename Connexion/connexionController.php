@@ -38,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('Location: ../Participant/accueilParticipant/accueilParticipantController.php');
                     exit();
                 case 2:
-                    $erreur = "Espace Gestionnaire non disponible pour le moment.";
-                    break;
+                    header('Location: ../Gestionnaire/menuGest/menuGest.php');
+                    exit();
                 case 1:
                     $erreur = "Espace Enseignant-Chercheur non disponible pour le moment.";
                     break;

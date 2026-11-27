@@ -10,7 +10,7 @@
 
     <div class="layout-container">
         <aside class="barre-laterale" aria-label="Navigation principale">
-            <a class="barre-laterale__marque" href="http://localhost/Prismelium/Prismelium/accueilParticipant/accueilParticipantView.php" aria-label="Accueil">
+            <a class="barre-laterale__marque" href="http://localhost/Prismelium/Participant/accueilParticipant/accueilParticipantController.php" aria-label="Accueil">
                 <img class="barre-laterale__logo-cerveau" src="../../images/brain-logo.png" alt="">
             </a>
             <nav class="barre-laterale__navigation">

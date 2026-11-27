@@ -15,9 +15,9 @@
                 <img class="barre-laterale__logo-cerveau" src="../../images/brain-logo.png" alt="">
             </a>
             <nav class="barre-laterale__navigation">
-                <a href="../experimentationsParticipant/experimentationsParticipantController.php">Expérimentations</a>
-                <a href="../../Messagerie/messagerie.php">Messagerie</a>
-                <a href="../planningParticipant/planningParticipantController.php">Planning</a>
+                <a href="http://localhost/Prismelium/Participant/experimentationsParticipant/experimentationsParticipantController.php">Expérimentations</a>
+                <a href="http://localhost/Prismelium/Messagerie/messagerie.php">Messagerie</a>
+                <a href="http://localhost/Prismelium/Participant/planningParticipant/planningParticipantController.php">Planning</a>
                 <a href="#">Paramètres</a>
             </nav>
             <img class="barre-laterale__logo-universite" src="../../images/university-logo.png" alt="Le Mans Université">
