@@ -83,19 +83,19 @@ INSERT INTO UTILISATEUR (Id_User, Nom_User, Prenom_User, Birth_User, Mail_User, 
 (14,'Bertrand','Noah','2001-02-27','noah.bertrand@example.com','9876','0600000014','Participant','Homme','Francais','Sombre','2025-02-12',1,3,6),
 (15,'Roux','Sarah','1997-04-19','sarah.roux@example.com','1379','0600000015','Participant premium','Femme','Francais','Clair','2025-02-15',0,3,3);
 
-INSERT INTO EXPERIMENTATION (Id_Exp, Nom_Exp, Desc_Exp, Date_Debut_Exp, Date_Fin_Exp, Statut_Exp, Type_Retribution, Montant_Retribution, Id_Equipe) VALUES
-(1,'Test interface web','Evaluation de navigation et ergonomie web','2025-03-01 09:00:00','2025-03-31 18:00:00','Terminee','Bon cadeau',10,3),
-(2,'Audit securite application','Evaluation de vulnerabilites applicatives','2025-04-01 09:00:00','2025-04-30 18:00:00','Terminee','Points',100,6),
-(3,'Test application mobile','Evaluation de performances et ergonomie mobile','2025-05-01 09:00:00','2025-05-31 18:00:00','Terminee','Bon cadeau',15,4),
-(4,'Etude moteur de recherche','Evaluation de pertinence et vitesse de recherche','2025-06-01 09:00:00','2025-06-30 18:00:00','Terminee','Virement',20,5),
-(5,'Test assistant IA','Evaluation de reponses generees par IA','2025-07-01 09:00:00','2025-07-31 18:00:00','Terminee','Points',150,5),
-(6,'Benchmark base de donnees','Comparaison de performances SQL','2025-08-01 09:00:00','2025-08-31 18:00:00','Terminee','Bon cadeau',10,10),
-(8,'Evaluation logiciel de gestion','Test fonctionnel d un outil de gestion','2025-10-01 09:00:00','2025-10-31 18:00:00','Terminee','Virement',25,9),
-(10,'Test jeu video','Evaluation de performances et experience de jeu','2025-12-01 09:00:00','2025-12-31 18:00:00','Terminee','Points',120,9),
-(11,'Etude reconnaissance vocale','Test de precision d un systeme vocal','2026-01-01 09:00:00','2026-01-31 18:00:00','Terminee','Bon cadeau',15,5),
-(12,'Test systeme embarque','Evaluation d un dispositif informatique embarque','2026-02-01 09:00:00','2026-02-28 18:00:00','Terminee','Points',60,4),
-(13,'Test accessibilite logiciel','Evaluation de l accessibilite d un logiciel','2026-03-01 09:00:00','2026-03-31 18:00:00','Terminee','Virement',20,10),
-(14,'Test outil de developpement','Evaluation d un environnement de programmation','2026-04-01 09:00:00','2026-04-30 18:00:00','En cours','Bon cadeau',15,3);
+INSERT INTO EXPERIMENTATION (Id_Exp, Nom_Exp, Desc_Exp, Date_Debut_Exp, Date_Fin_Exp, Statut_Exp, Type_Retribution, Montant_Retribution, Duree_Exp_Min, Nb_Sessions_Prevues, Id_Equipe) VALUES
+(1,'Test interface web','Evaluation de navigation et ergonomie web','2025-03-01 09:00:00','2025-03-31 18:00:00','Terminee','Bon cadeau',10,30,2,3),
+(2,'Audit securite application','Evaluation de vulnerabilites applicatives','2025-04-01 09:00:00','2025-04-30 18:00:00','Terminee','Points',100,60,1,6),
+(3,'Test application mobile','Evaluation de performances et ergonomie mobile','2025-05-01 09:00:00','2025-05-31 18:00:00','Terminee','Bon cadeau',15,15,3,4),
+(4,'Etude moteur de recherche','Evaluation de pertinence et vitesse de recherche','2025-06-01 09:00:00','2025-06-30 18:00:00','Terminee','Virement',20,30,1,5),
+(5,'Test assistant IA','Evaluation de reponses generees par IA','2025-07-01 09:00:00','2025-07-31 18:00:00','Terminee','Points',150,10,3,5),
+(6,'Benchmark base de donnees','Comparaison de performances SQL','2025-08-01 09:00:00','2025-08-31 18:00:00','Terminee','Bon cadeau',10,20,2,10),
+(8,'Evaluation logiciel de gestion','Test fonctionnel d un outil de gestion','2025-10-01 09:00:00','2025-10-31 18:00:00','Terminee','Virement',25,45,1,9),
+(10,'Test jeu video','Evaluation de performances et experience de jeu','2025-12-01 09:00:00','2025-12-31 18:00:00','Terminee','Points',120,25,2,9),
+(11,'Etude reconnaissance vocale','Test de precision d un systeme vocal','2026-01-01 09:00:00','2026-01-31 18:00:00','Terminee','Bon cadeau',15,60,1,5),
+(12,'Test systeme embarque','Evaluation d un dispositif informatique embarque','2026-02-01 09:00:00','2026-02-28 18:00:00','Terminee','Points',60,30,2,4),
+(13,'Test accessibilite logiciel','Evaluation de l accessibilite d un logiciel','2026-03-01 09:00:00','2026-03-31 18:00:00','Terminee','Virement',20,10,4,10),
+(14,'Test outil de developpement','Evaluation d un environnement de programmation','2026-04-01 09:00:00','2026-04-30 18:00:00','En cours','Bon cadeau',15,30,2,3);
 
 INSERT INTO LIMITES (Id_Exp, Id_Contrainte, Val_Min, Val_Max) VALUES
 (1,1,25,NULL),(2,2,20,30),(3,2,20,30),

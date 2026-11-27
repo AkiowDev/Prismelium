@@ -72,6 +72,8 @@ CREATE TABLE EXPERIMENTATION(
     Statut_Exp VARCHAR(20) NOT NULL DEFAULT 'Brouillon',
     Type_Retribution VARCHAR(50),
     Montant_Retribution DECIMAL(10,2),
+    Duree_Exp_Min INT UNSIGNED,
+    Nb_Sessions_Prevues INT UNSIGNED, 
     Id_Equipe INT NOT NULL,
     PRIMARY KEY(Id_Exp),
     FOREIGN KEY(Id_Equipe) REFERENCES EQUIPE(Id_Equipe)
