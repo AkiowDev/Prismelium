@@ -1,64 +1,54 @@
-
 <?php
+declare(strict_types=1);
 
-function get_bdd() {
+namespace Prismelium\Models {
+    use PDO;
 
-    static $bdd = null;
+    final class ConnexionModel
+    {
+        private PDO $pdo;
 
-    if ($bdd === null) {
+        public function __construct(?PDO $pdo = null)
+        {
+            if ($pdo === null && !function_exists('prismelium_pdo')) {
+                require_once __DIR__ . '/../load_database.php';
+            }
 
-        $hostname = 'localhost';
-        $user = 'root';
-        $password = '';
-        $db_name = 'Prismelium';
+            $this->pdo = $pdo ?? \prismelium_pdo();
+        }
 
-        $dsn = "mysql:host=$hostname;dbname=$db_name;charset=utf8mb4";
-
-        try {
-
-            $bdd = new PDO($dsn, $user, $password, [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false
-            ]);
-
-        } catch (PDOException $e) {
-
-            error_log("Erreur de connexion à la base de données : " . $e->getMessage());
-
-            throw new RuntimeException(
-                "Impossible de se connecter à la base de données."
+        public function get_user_by_mail(string $email): array|false
+        {
+            $query = $this->pdo->prepare(
+                'SELECT * FROM UTILISATEUR WHERE Mail_User = :email'
             );
+            $query->execute(['email' => $email]);
+
+            return $query->fetch(PDO::FETCH_ASSOC);
+        }
+
+        public function get_mails(): array
+        {
+            return $this->pdo->query('SELECT Mail_User FROM UTILISATEUR')->fetchAll();
         }
     }
-
-    return $bdd;
 }
 
+namespace {
+    function get_bdd(): PDO
+    {
+        require_once __DIR__ . '/../load_database.php';
 
-function get_mails() {
+        return \prismelium_pdo();
+    }
 
-    $bdd = get_bdd();
+    function get_user_by_mail(string $email): array|false
+    {
+        return (new \Prismelium\Models\ConnexionModel())->get_user_by_mail($email);
+    }
 
-    $query = $bdd->query(
-        'SELECT Mail_User FROM utilisateur'
-    );
-
-    return $query->fetchAll();
+    function get_mails(): array
+    {
+        return (new \Prismelium\Models\ConnexionModel())->get_mails();
+    }
 }
-
-
-function get_user_by_mail($mail) {
-
-    $bdd = get_bdd();
-
-    $query = $bdd->prepare(
-        'SELECT * FROM utilisateur WHERE Mail_User = ?'
-    );
-
-    $query->execute([$mail]);
-
-    return $query->fetch();
-}
-
-?>

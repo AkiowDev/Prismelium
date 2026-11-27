@@ -4,6 +4,6 @@ session_start();
 session_unset();
 session_destroy();
 
-header('Location: /Prismelium/Connexion/connexionController.php');
+header('Location: /Prismelium');
 exit();
 ?>

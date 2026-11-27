@@ -1,0 +1,259 @@
+body {
+    min-width: 1024px;
+}
+
+.contenu-principal.menu-enseignant-chercheur {
+    display: grid;
+    grid-template-columns: minmax(320px, 390px) minmax(0, 1fr);
+    gap: 19px;
+    min-height: 100vh;
+    padding: 32px 35px 27px 21px;
+}
+
+.planning {
+    height: calc(100vh - 61px);
+    min-height: 700px;
+    overflow: hidden;
+    border: 15px solid #d4451b;
+    border-radius: 20px;
+    background: #ff805b;
+    padding: 0 16px 16px;
+}
+
+.planning__titre {
+    margin: 4px 0 0;
+    color: #111;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 46px;
+    text-align: center;
+}
+
+.planning__liste {
+    display: flex;
+    flex-direction: column;
+    gap: 5.75px;
+    margin-top: 24px;
+}
+
+.planning__jour {
+    display: flex;
+    min-height: 81px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px 9px 4px 13px;
+    border-radius: 10px;
+    background: #282f63;
+    color: #fff;
+}
+
+.planning__informations {
+    min-width: 0;
+}
+
+.planning__date,
+.planning__evenements {
+    margin: 0;
+    font-weight: 400;
+}
+
+.planning__date {
+    font-size: 20px;
+    line-height: 1.1;
+}
+
+.planning__evenements {
+    margin-top: 8px;
+    font-size: 25px;
+    line-height: 1.15;
+}
+
+.planning__vide {
+    margin: 24px 0;
+    color: #282f63;
+    font-size: 18px;
+    text-align: center;
+}
+
+.planning__statut {
+    width: 27px;
+    height: 24px;
+    flex: none;
+}
+
+.menu-enseignant-chercheur__tableau {
+    min-width: 0;
+    padding-top: 21px;
+}
+
+.menu-enseignant-chercheur__bienvenue {
+    margin: 0;
+    color: #d4451b;
+    font-size: clamp(36px, 4.17vw, 60px);
+    font-weight: 700;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.actions-menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 27px 29px;
+    margin-top: 43px;
+}
+
+.actions-menu__bouton {
+    display: grid;
+    min-width: 0;
+    min-height: 74px;
+    place-items: center;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: #d9d9d9;
+    box-shadow: 0 4px 3px rgb(0 0 0 / 10%);
+    color: #111;
+    font-size: clamp(14px, 1.39vw, 20px);
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+}
+
+.actions-menu__bouton:hover {
+    background: #cecece;
+}
+
+.actions-menu__bouton:focus-visible {
+    outline: 3px solid #282f63;
+    outline-offset: 3px;
+}
+
+.activites {
+    margin-top: 25px;
+}
+
+.activites__entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 26px 8px;
+}
+
+.activites__titre {
+    margin: 0;
+    color: #111;
+    font-size: clamp(24px, 2.22vw, 32px);
+    font-weight: 700;
+    line-height: 1.78;
+}
+
+.activites__panneau {
+    width: 100%;
+    height: clamp(360px, calc(100vh - 497px), 527px);
+    overflow: auto;
+    border-radius: 45px;
+    background: #d9d9d9;
+    padding: 20px;
+}
+
+.activites__liste {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.activites__element {
+    display: grid;
+    min-height: 84px;
+    grid-template-columns: 10px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid #e6e6e6;
+    border-radius: 14px;
+    background: #fff;
+    padding: 14px 16px;
+}
+
+.activites__vide {
+    border-radius: 12px;
+    background: #fff;
+    color: #555;
+    padding: 18px;
+    text-align: center;
+}
+
+.activites__marque {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.activites__marque--experimentation {
+    background: #d4451b;
+}
+
+.activites__marque--inscription {
+    background: #0073c5;
+}
+
+.activites__marque--planning {
+    background: #7a72c0;
+}
+
+.activites__marque--retribution {
+    background: #1f8107;
+}
+
+.activites__contenu {
+    min-width: 0;
+}
+
+.activites__contenu h3,
+.activites__contenu p {
+    margin: 0;
+}
+
+.activites__contenu h3 {
+    color: #282f63;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.activites__contenu p {
+    margin-top: 4px;
+    color: #686868;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.activites__heure {
+    color: #686868;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+@media (max-width: 1279px) {
+    .activites__element {
+        grid-template-columns: 10px minmax(0, 1fr);
+    }
+
+    .activites__heure {
+        grid-column: 2;
+        margin-top: -6px;
+    }
+}
+
+@media (max-height: 760px) {
+    .planning {
+        height: auto;
+        min-height: 700px;
+    }
+
+    .activites__panneau {
+        height: 360px;
+    }
+}

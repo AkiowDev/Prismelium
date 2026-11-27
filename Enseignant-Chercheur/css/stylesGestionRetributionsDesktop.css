@@ -1,0 +1,203 @@
+body {
+    min-width: 1024px;
+}
+
+.contenu-principal.page-retributions {
+    padding: 0 5px 48px;
+}
+
+.entete-retributions h1 {
+    padding-top: 29px;
+    font-size: 60px;
+    line-height: 1.2;
+}
+
+.recherche-retributions {
+    margin: 35px 0 0 6px;
+}
+
+.recherche-retributions h2,
+.liste-retributions h2 {
+    margin: 0;
+    color: #0073c5;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.recherche-retributions form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 16px;
+}
+
+.recherche-retributions label {
+    margin-bottom: 5px;
+    color: #111;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.recherche-retributions input[type="search"] {
+    width: 430px;
+    height: 40px;
+    padding: 3px 8px;
+    border: 1px solid #a2a2a2;
+    border-radius: 0;
+    background: #fff;
+    color: #111;
+    font-family: Poppins, Inter, Arial, sans-serif;
+    font-size: 15px;
+}
+
+.recherche-retributions input[type="search"]:focus-visible {
+    outline: 2px solid #0073c5;
+    outline-offset: 2px;
+}
+
+.liste-retributions {
+    margin: 35px 0 0 7px;
+}
+
+.liste-retributions h2 {
+    font-size: 32px;
+    line-height: 1.25;
+}
+
+.grille-retributions {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 188px));
+    justify-content: space-between;
+    column-gap: 20px;
+    row-gap: 45px;
+    margin: 42px 52px 0 39px;
+}
+
+.carte-retribution {
+    display: flex;
+    width: 100%;
+    height: 155px;
+    min-width: 0;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+    border: 5px solid #808080;
+    border-radius: 50px;
+    background: #d9d9d9;
+    color: #111;
+    cursor: pointer;
+    font-family: Inter, Arial, sans-serif;
+}
+
+.carte-retribution img {
+    display: block;
+    width: 100%;
+    height: 93px;
+    flex: none;
+    object-fit: cover;
+    object-position: center 38%;
+}
+
+.carte-retribution span {
+    display: grid;
+    min-height: 0;
+    flex: 1;
+    place-items: center;
+    overflow: hidden;
+    padding: 0 5px;
+    background: #d9d9d9;
+    font-size: 20px;
+    line-height: 1.15;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.carte-retribution:hover {
+    border-color: #2a3f83;
+}
+
+.carte-retribution:focus-visible {
+    outline: 3px solid #d4451b;
+    outline-offset: 4px;
+}
+
+.retributions-notice {
+    margin: 18px 12px 0;
+    padding: 12px 16px;
+    border: 1px solid;
+    border-radius: 8px;
+}
+
+.retributions-notice--success {
+    border-color: #397448;
+    background: #eff8f1;
+    color: #245a32;
+}
+
+.retributions-notice--error {
+    border-color: #a12020;
+    background: #fff1f1;
+    color: #781515;
+}
+
+.retributions-vides {
+    margin: 30px 0;
+    color: #555;
+    font-size: 18px;
+}
+
+.overlay-retribution {
+    width: min(535px, calc(100vw - 32px));
+    max-width: none;
+    min-height: 223px;
+    padding: 0;
+    border: 3px solid #282f63;
+    border-radius: 35px;
+    background: #fff;
+    color: #111;
+}
+
+.overlay-retribution::backdrop {
+    background: rgb(0 0 0 / 35%);
+}
+
+.overlay-retribution form {
+    display: flex;
+    min-height: 217px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 27px 31px 29px;
+}
+
+.overlay-retribution p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.45;
+    text-align: center;
+}
+
+.overlay-retribution button {
+    width: 170px;
+    min-height: 37px;
+    padding: 3px 16px;
+    border: 0;
+    border-radius: 50px;
+    background: #2a3f83;
+    box-shadow: 0 4px 8px 4px rgb(0 0 0 / 20%);
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.overlay-retribution button:hover {
+    background: #1d316f;
+}
+
+.overlay-retribution button:focus-visible {
+    outline: 3px solid #d4451b;
+    outline-offset: 3px;
+}

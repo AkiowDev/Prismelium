@@ -86,19 +86,19 @@ INSERT INTO UTILISATEUR (Id_User, Nom_User, Prenom_User, Birth_User, Mail_User, 
 (17,'Rousseau','Matheo','2007-10-20','matheo.rousseau2@example.com','cemoi','0606060606','Owner','Homme','Francais','Clair','2025-09-01', 1,1,2),
 (18,'Rousseau','Matheo','2007-10-20','matheo.rousseau3@example.com','cemoi','0606060606','Owner','Homme','Francais','Clair','2025-09-01', 1,1,3);
 
-INSERT INTO EXPERIMENTATION (Id_Exp, Nom_Exp, Desc_Exp, Date_Debut_Exp, Date_Fin_Exp, Statut_Exp, Type_Retribution, Montant_Retribution, Id_Equipe) VALUES
-(1,'Test interface web','Evaluation de navigation et ergonomie web','2025-03-01 09:00:00','2025-03-31 18:00:00','Terminee','Bon cadeau',10,3),
-(2,'Audit securite application','Evaluation de vulnerabilites applicatives','2025-04-01 09:00:00','2025-04-30 18:00:00','Terminee','Points',100,6),
-(3,'Test application mobile','Evaluation de performances et ergonomie mobile','2025-05-01 09:00:00','2025-05-31 18:00:00','Terminee','Bon cadeau',15,4),
-(4,'Etude moteur de recherche','Evaluation de pertinence et vitesse de recherche','2025-06-01 09:00:00','2025-06-30 18:00:00','Terminee','Virement',20,5),
-(5,'Test assistant IA','Evaluation de reponses generees par IA','2025-07-01 09:00:00','2025-07-31 18:00:00','Terminee','Points',150,5),
-(6,'Benchmark base de donnees','Comparaison de performances SQL','2025-08-01 09:00:00','2025-08-31 18:00:00','Terminee','Bon cadeau',10,10),
-(8,'Evaluation logiciel de gestion','Test fonctionnel d un outil de gestion','2025-10-01 09:00:00','2025-10-31 18:00:00','Terminee','Virement',25,9),
-(10,'Test jeu video','Evaluation de performances et experience de jeu','2025-12-01 09:00:00','2025-12-31 18:00:00','Terminee','Points',120,9),
-(11,'Etude reconnaissance vocale','Test de precision d un systeme vocal','2026-01-01 09:00:00','2026-01-31 18:00:00','Terminee','Bon cadeau',15,5),
-(12,'Test systeme embarque','Evaluation d un dispositif informatique embarque','2026-02-01 09:00:00','2026-02-28 18:00:00','Terminee','Points',60,4),
-(13,'Test accessibilite logiciel','Evaluation de l accessibilite d un logiciel','2026-03-01 09:00:00','2026-03-31 18:00:00','Terminee','Virement',20,10),
-(14,'Test outil de developpement','Evaluation d un environnement de programmation','2026-04-01 09:00:00','2026-04-30 18:00:00','En cours','Bon cadeau',15,3);
+INSERT INTO EXPERIMENTATION (Id_Exp, Nom_Exp, Desc_Exp, Date_Debut_Exp, Date_Fin_Exp, Statut_Exp, Type_Retribution, Montant_Retribution, Duree_Exp_Min, Nb_Sessions_Prevues, Id_Equipe) VALUES
+(1,'Test interface web','Evaluation de navigation et ergonomie web','2025-03-01 09:00:00','2025-03-31 18:00:00','Terminee','Bon cadeau',10,30,2,3),
+(2,'Audit securite application','Evaluation de vulnerabilites applicatives','2025-04-01 09:00:00','2025-04-30 18:00:00','Terminee','Points',100,60,1,6),
+(3,'Test application mobile','Evaluation de performances et ergonomie mobile','2025-05-01 09:00:00','2025-05-31 18:00:00','Terminee','Bon cadeau',15,15,3,4),
+(4,'Etude moteur de recherche','Evaluation de pertinence et vitesse de recherche','2025-06-01 09:00:00','2025-06-30 18:00:00','Terminee','Virement',20,30,1,5),
+(5,'Test assistant IA','Evaluation de reponses generees par IA','2025-07-01 09:00:00','2025-07-31 18:00:00','Terminee','Points',150,10,3,5),
+(6,'Benchmark base de donnees','Comparaison de performances SQL','2025-08-01 09:00:00','2025-08-31 18:00:00','Terminee','Bon cadeau',10,20,2,10),
+(8,'Evaluation logiciel de gestion','Test fonctionnel d un outil de gestion','2025-10-01 09:00:00','2025-10-31 18:00:00','Terminee','Virement',25,45,1,9),
+(10,'Test jeu video','Evaluation de performances et experience de jeu','2025-12-01 09:00:00','2025-12-31 18:00:00','Terminee','Points',120,25,2,9),
+(11,'Etude reconnaissance vocale','Test de precision d un systeme vocal','2026-01-01 09:00:00','2026-01-31 18:00:00','Terminee','Bon cadeau',15,60,1,5),
+(12,'Test systeme embarque','Evaluation d un dispositif informatique embarque','2026-02-01 09:00:00','2026-02-28 18:00:00','Terminee','Points',60,30,2,4),
+(13,'Test accessibilite logiciel','Evaluation de l accessibilite d un logiciel','2026-03-01 09:00:00','2026-03-31 18:00:00','Terminee','Virement',20,10,4,10),
+(14,'Test outil de developpement','Evaluation d un environnement de programmation','2026-04-01 09:00:00','2026-04-30 18:00:00','En cours','Bon cadeau',15,30,2,3);
 
 INSERT INTO LIMITES (Id_Exp, Id_Contrainte, Val_Min, Val_Max) VALUES
 (1,1,25,NULL),(2,2,20,30),(3,2,20,30),
@@ -136,17 +136,18 @@ INSERT INTO SESSION (Id_Ses, Date_Ses, Debut_Ses, Fin_Ses, Statut_Ses, Nb_Place_
 (15,'2026-05-05','14:00:00','15:00:00','Planifiee',150,10),
 (16,'2026-06-01', '09:00:00', '12:00:00', 'Planifiee', 50, 14);
 
-INSERT INTO QUESTIONNAIRE (Id_Quest, Nom_Quest, Ano_Quest, Id_Exp, Id_User) VALUES
-(1,'Interface mobile',1,1,2),
-(2,'Habitudes numeriques',1,2,2),
-(3,'Moteur de recherche',1,3,3),
-(4,'Experience achat',1,4,3),
-(5,'Assistant virtuel',1,5,2),
-(9,'Habitudes alimentaires',1,8,2),
-(10,'Plateforme video',1,10,3),
-(11,'Usage IA',1,11,2),
-(12,'Inscription en ligne',1,12,3),
-(13,'Satisfaction client',1,13,2);
+INSERT INTO QUESTIONNAIRE (Id_Quest, Nom_Quest, Ano_Quest, Id_Exp) VALUES
+(1,'Interface mobile',1,1),
+(2,'Habitudes numeriques',1,2),
+(3,'Moteur de recherche',1,3),
+(4,'Experience achat',1,4),
+(5,'Assistant virtuel',1,5),
+(9,'Habitudes alimentaires',1,8),
+(10,'Plateforme video',1,10),
+(11,'Usage IA',1,11),
+(12,'Inscription en ligne',1,12),
+(13,'Satisfaction client',1,13),
+(14,'Ressenti outil',1,14);
 
 INSERT INTO JOURNAL_LOG (Id_Log, Type_Log, Date_Log, IP_log, Erreur_Log, Id_User) VALUES
 (1,'Connexion','2025-03-01 08:30:00','192.0.2.1',NULL,1),
@@ -177,17 +178,31 @@ INSERT INTO DOCUMENT (Id_Doc, Nom_Doc, Type_Doc, Poids_Doc, Url_Doc, Id_Exp) VAL
 (12,'Test inscription.pdf','pdf',120,'https://example.com/doc12',12),
 (13,'Questionnaire satisfaction.pdf','pdf',170,'https://example.com/doc13',13);
 
-INSERT INTO QUESTION (Id_Question, Contenu_Question, Reponse_Question, Id_Quest) VALUES
-(1,'Cette application est-elle facile a utiliser ?','Oui',1),
-(2,'Combien de temps passez-vous en ligne ?','Trois heures',2),
-(3,'Les resultats de recherche sont-ils pertinents ?','Oui',3),
-(4,'Le parcours d achat est-il simple ?','A ameliorer',4),
-(5,'L assistant virtuel vous aide-t-il ?','Oui',5),
-(9,'Preparez-vous vos repas a domicile ?','Souvent',9),
-(10,'La navigation video est-elle fluide ?','Oui',10),
-(11,'Utilisez-vous des outils d intelligence artificielle ?','Oui',11),
-(12,'Le formulaire d inscription est-il clair ?','Oui',12),
-(13,'Recommanderiez-vous ce service ?','Oui',13);
+INSERT INTO QUESTION (Id_Question, Contenu_Question, Id_Quest) VALUES
+(1,'Cette application est-elle facile a utiliser ?',1),
+(2,'Combien de temps passez-vous en ligne ?',2),
+(3,'Les resultats de recherche sont-ils pertinents ?',3),
+(4,'Le parcours d achat est-il simple ?',4),
+(5,'L assistant virtuel vous aide-t-il ?',5),
+(9,'Preparez-vous vos repas a domicile ?',9),
+(10,'La navigation video est-elle fluide ?',10),
+(11,'Utilisez-vous des outils d intelligence artificielle ?',11),
+(12,'Le formulaire d inscription est-il clair ?',12),
+(13,'Recommanderiez-vous ce service ?',13),
+(14,'La prise en main était-elle intuitive ?',14),
+(15,'Recommanderiez-vous cet outil ?',14);
+
+INSERT INTO REPONSE (Id_User, Id_Question, Contenu_Rep) VALUES
+(3,1,'Oui'),
+(4,2,'Trois heures'),
+(5,3,'Oui'),
+(13,4,'A ameliorer'),
+(15,5,'Oui'),
+(3,9,'Souvent'),
+(4,10,'Oui'),
+(5,11,'Oui'),
+(13,12,'Oui'),
+(15,13,'Oui');
 
 INSERT INTO ADMINISTRATION (Id_Role, Id_Perm) VALUES
 (1,1),(1,2),(1,3),(1,4),(1,5),
