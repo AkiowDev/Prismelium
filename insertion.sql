@@ -133,17 +133,18 @@ INSERT INTO SESSION (Id_Ses, Date_Ses, Debut_Ses, Fin_Ses, Statut_Ses, Nb_Place_
 (15,'2026-05-05','14:00:00','15:00:00','Planifiee',150,10),
 (16,'2026-06-01', '09:00:00', '12:00:00', 'Planifiee', 50, 14);
 
-INSERT INTO QUESTIONNAIRE (Id_Quest, Nom_Quest, Ano_Quest, Id_Exp, Id_User) VALUES
-(1,'Interface mobile',1,1,2),
-(2,'Habitudes numeriques',1,2,2),
-(3,'Moteur de recherche',1,3,3),
-(4,'Experience achat',1,4,3),
-(5,'Assistant virtuel',1,5,2),
-(9,'Habitudes alimentaires',1,8,2),
-(10,'Plateforme video',1,10,3),
-(11,'Usage IA',1,11,2),
-(12,'Inscription en ligne',1,12,3),
-(13,'Satisfaction client',1,13,2);
+INSERT INTO QUESTIONNAIRE (Id_Quest, Nom_Quest, Ano_Quest, Id_Exp) VALUES
+(1,'Interface mobile',1,1),
+(2,'Habitudes numeriques',1,2),
+(3,'Moteur de recherche',1,3),
+(4,'Experience achat',1,4),
+(5,'Assistant virtuel',1,5),
+(9,'Habitudes alimentaires',1,8),
+(10,'Plateforme video',1,10),
+(11,'Usage IA',1,11),
+(12,'Inscription en ligne',1,12),
+(13,'Satisfaction client',1,13),
+(14,'Ressenti outil',1,14);
 
 INSERT INTO JOURNAL_LOG (Id_Log, Type_Log, Date_Log, IP_log, Erreur_Log, Id_User) VALUES
 (1,'Connexion','2025-03-01 08:30:00','192.0.2.1',NULL,1),
@@ -174,17 +175,31 @@ INSERT INTO DOCUMENT (Id_Doc, Nom_Doc, Type_Doc, Poids_Doc, Url_Doc, Id_Exp) VAL
 (12,'Test inscription.pdf','pdf',120,'https://example.com/doc12',12),
 (13,'Questionnaire satisfaction.pdf','pdf',170,'https://example.com/doc13',13);
 
-INSERT INTO QUESTION (Id_Question, Contenu_Question, Reponse_Question, Id_Quest) VALUES
-(1,'Cette application est-elle facile a utiliser ?','Oui',1),
-(2,'Combien de temps passez-vous en ligne ?','Trois heures',2),
-(3,'Les resultats de recherche sont-ils pertinents ?','Oui',3),
-(4,'Le parcours d achat est-il simple ?','A ameliorer',4),
-(5,'L assistant virtuel vous aide-t-il ?','Oui',5),
-(9,'Preparez-vous vos repas a domicile ?','Souvent',9),
-(10,'La navigation video est-elle fluide ?','Oui',10),
-(11,'Utilisez-vous des outils d intelligence artificielle ?','Oui',11),
-(12,'Le formulaire d inscription est-il clair ?','Oui',12),
-(13,'Recommanderiez-vous ce service ?','Oui',13);
+INSERT INTO QUESTION (Id_Question, Contenu_Question, Id_Quest) VALUES
+(1,'Cette application est-elle facile a utiliser ?',1),
+(2,'Combien de temps passez-vous en ligne ?',2),
+(3,'Les resultats de recherche sont-ils pertinents ?',3),
+(4,'Le parcours d achat est-il simple ?',4),
+(5,'L assistant virtuel vous aide-t-il ?',5),
+(9,'Preparez-vous vos repas a domicile ?',9),
+(10,'La navigation video est-elle fluide ?',10),
+(11,'Utilisez-vous des outils d intelligence artificielle ?',11),
+(12,'Le formulaire d inscription est-il clair ?',12),
+(13,'Recommanderiez-vous ce service ?',13),
+(14,'La prise en main était-elle intuitive ?',14),
+(15,'Recommanderiez-vous cet outil ?',14);
+
+INSERT INTO REPONSE (Id_User, Id_Question, Contenu_Rep) VALUES
+(3,1,'Oui'),
+(4,2,'Trois heures'),
+(5,3,'Oui'),
+(13,4,'A ameliorer'),
+(15,5,'Oui'),
+(3,9,'Souvent'),
+(4,10,'Oui'),
+(5,11,'Oui'),
+(13,12,'Oui'),
+(15,13,'Oui');
 
 INSERT INTO ADMINISTRATION (Id_Role, Id_Perm) VALUES
 (1,1),(1,2),(1,3),(1,4),(1,5),

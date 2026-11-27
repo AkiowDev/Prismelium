@@ -57,6 +57,15 @@
                     </button>
                 </form>
             <?php endif; ?>
+
+            <?php if (trim((string) $statut_insc) !== 'Non'): ?>
+                <form method="POST" action="experimentationParticipantController.php">
+                    <input type="hidden" name="id_exp" value="<?= htmlspecialchars((string) $exp_id, ENT_QUOTES, 'UTF-8') ?>">
+                    <button type="submit" name="action" value="questionnaire" class="btn-questionnaire">
+                        Questionnaire
+                    </button>
+                </form>
+            <?php endif; ?>
         </section>
     </main>
 </body>
